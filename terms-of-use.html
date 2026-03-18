@@ -19,111 +19,149 @@
     ul { padding-left: 20px; }
     .last-updated { color: #888; font-size: 0.85rem; margin-bottom: 32px; }
     a { color: #4a5568; }
+    .lang-switcher {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+    .lang-btn {
+      padding: 6px 18px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      background: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: #555;
+    }
+    .lang-btn.active {
+      background: #1a1a2e;
+      color: #fff;
+      border-color: #1a1a2e;
+    }
+    [data-lang] { display: none; }
   </style>
 </head>
 <body>
 
-  <h1>Terms of Use</h1>
-  <p class="last-updated">Last updated: March 18, 2026</p>
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('uk')">UK</button>
+  </div>
 
-  <p>
-    Please read these Terms of Use carefully before using <strong>Daily Rune</strong>
-    ("the App"). By downloading or using the App, you agree to be bound by these terms.
-    If you do not agree, do not use the App.
-  </p>
+  <!-- ENGLISH -->
+  <div data-lang="en">
+    <h1>Terms of Use</h1>
+    <p class="last-updated">Last updated: March 18, 2026</p>
+    <p>Please read these Terms of Use carefully before using <strong>Daily Rune</strong> ("the App"). By downloading or using the App, you agree to be bound by these terms. If you do not agree, do not use the App.</p>
 
-  <h2>1. About the App</h2>
-  <p>
-    Daily Rune is an entertainment and personal reflection application based on Elder Futhark
-    rune symbolism. The App is intended for entertainment, meditation, and personal reflection
-    purposes only. Rune readings provided by the App are not a substitute for professional
-    advice of any kind — including medical, legal, financial, or psychological advice.
-  </p>
+    <h2>1. About the App</h2>
+    <p>Daily Rune is an entertainment and personal reflection application based on Elder Futhark rune symbolism. The App is intended for entertainment, meditation, and personal reflection purposes only. Rune readings provided by the App are not a substitute for professional advice of any kind — including medical, legal, financial, or psychological advice.</p>
 
-  <h2>2. Eligibility</h2>
-  <p>
-    The App is intended for users aged 13 and older. By using the App, you confirm that you
-    meet this age requirement. Users under 18 should have parental or guardian consent.
-  </p>
+    <h2>2. Eligibility</h2>
+    <p>The App is intended for users aged 13 and older. By using the App, you confirm that you meet this age requirement. Users under 18 should have parental or guardian consent.</p>
 
-  <h2>3. License</h2>
-  <p>
-    We grant you a limited, non-exclusive, non-transferable, revocable license to use the App
-    for personal, non-commercial purposes. You may not:
-  </p>
-  <ul>
-    <li>Copy, modify, or distribute the App or its content</li>
-    <li>Reverse engineer or attempt to extract the source code</li>
-    <li>Use the App for any unlawful purpose</li>
-    <li>Sell, resell, or sublicense access to the App</li>
-  </ul>
+    <h2>3. License</h2>
+    <p>We grant you a limited, non-exclusive, non-transferable, revocable license to use the App for personal, non-commercial purposes. You may not:</p>
+    <ul>
+      <li>Copy, modify, or distribute the App or its content</li>
+      <li>Reverse engineer or attempt to extract the source code</li>
+      <li>Use the App for any unlawful purpose</li>
+      <li>Sell, resell, or sublicense access to the App</li>
+    </ul>
 
-  <h2>4. In-App Purchases</h2>
-  <p>
-    The App offers a one-time premium unlock purchase that removes the daily reading limit.
-    All purchases are processed by Google Play or the Apple App Store and are subject to
-    their respective terms and refund policies. We do not handle payment information directly.
-  </p>
-  <p>
-    Purchases are non-refundable except where required by applicable law or the platform's
-    refund policy. If you experience an issue with a purchase, please contact us at
-    <a href="mailto:runes.chevit@gmail.com">runes.chevit@gmail.com</a>.
-  </p>
+    <h2>4. In-App Purchases</h2>
+    <p>The App offers a one-time premium unlock purchase that removes the daily reading limit. All purchases are processed by Google Play or the Apple App Store and are subject to their respective terms and refund policies. We do not handle payment information directly.</p>
+    <p>Purchases are non-refundable except where required by applicable law or the platform's refund policy. If you experience an issue with a purchase, please contact us at <a href="mailto:runes.chevit@gmail.com">runes.chevit@gmail.com</a>.</p>
 
-  <h2>5. Free Tier Limitations</h2>
-  <p>
-    Free users are limited to a set number of readings per day as determined by the App's
-    configuration. This limit may change over time. We reserve the right to modify the free
-    tier at any time without prior notice.
-  </p>
+    <h2>5. Free Tier Limitations</h2>
+    <p>Free users are limited to a set number of readings per day as determined by the App's configuration. This limit may change over time. We reserve the right to modify the free tier at any time without prior notice.</p>
 
-  <h2>6. Advertisements</h2>
-  <p>
-    Free-tier users may see advertisements served by Google AdMob. Premium users do not see
-    ads. We are not responsible for the content of third-party advertisements displayed
-    within the App.
-  </p>
+    <h2>6. Advertisements</h2>
+    <p>Free-tier users may see advertisements served by Google AdMob. Premium users do not see ads. We are not responsible for the content of third-party advertisements displayed within the App.</p>
 
-  <h2>7. Disclaimer of Warranties</h2>
-  <p>
-    The App is provided "as is" and "as available" without warranties of any kind, either
-    express or implied. We do not warrant that the App will be uninterrupted, error-free,
-    or free of harmful components. Rune readings are generated for entertainment purposes
-    only and carry no guarantee of accuracy or outcome.
-  </p>
+    <h2>7. Disclaimer of Warranties</h2>
+    <p>The App is provided "as is" and "as available" without warranties of any kind, either express or implied. We do not warrant that the App will be uninterrupted, error-free, or free of harmful components. Rune readings are generated for entertainment purposes only and carry no guarantee of accuracy or outcome.</p>
 
-  <h2>8. Limitation of Liability</h2>
-  <p>
-    To the fullest extent permitted by law, we shall not be liable for any indirect,
-    incidental, special, or consequential damages arising from your use of the App,
-    including but not limited to decisions made based on rune readings provided by the App.
-  </p>
+    <h2>8. Limitation of Liability</h2>
+    <p>To the fullest extent permitted by law, we shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of the App, including but not limited to decisions made based on rune readings provided by the App.</p>
 
-  <h2>9. Intellectual Property</h2>
-  <p>
-    All content within the App — including rune descriptions, imagery, design, and code —
-    is owned by or licensed to us and is protected by applicable intellectual property laws.
-    You may not reproduce or use any App content outside the App without written permission.
-  </p>
+    <h2>9. Intellectual Property</h2>
+    <p>All content within the App — including rune descriptions, imagery, design, and code — is owned by or licensed to us and is protected by applicable intellectual property laws. You may not reproduce or use any App content outside the App without written permission.</p>
 
-  <h2>10. Changes to These Terms</h2>
-  <p>
-    We may update these Terms of Use from time to time. Changes will be posted on this page
-    with an updated "Last updated" date. Continued use of the App after changes constitutes
-    acceptance of the revised terms.
-  </p>
+    <h2>10. Changes to These Terms</h2>
+    <p>We may update these Terms of Use from time to time. Changes will be posted on this page with an updated "Last updated" date. Continued use of the App after changes constitutes acceptance of the revised terms.</p>
 
-  <h2>11. Governing Law</h2>
-  <p>
-    These Terms are governed by the laws of Ukraine. Any disputes shall be resolved in
-    accordance with applicable Ukrainian law.
-  </p>
+    <h2>11. Governing Law</h2>
+    <p>These Terms are governed by the laws of Ukraine. Any disputes shall be resolved in accordance with applicable Ukrainian law.</p>
 
-  <h2>12. Contact Us</h2>
-  <p>
-    If you have any questions about these Terms of Use, please contact us at:<br />
-    <strong><a href="mailto:runes.chevit@gmail.com">runes.chevit@gmail.com</a></strong>
-  </p>
+    <h2>12. Contact Us</h2>
+    <p>If you have any questions about these Terms of Use, please contact us at:<br />
+    <strong><a href="mailto:runes.chevit@gmail.com">runes.chevit@gmail.com</a></strong></p>
+  </div>
+
+  <!-- UKRAINIAN -->
+  <div data-lang="uk">
+    <h1>Умови використання</h1>
+    <p class="last-updated">Останнє оновлення: 18 березня 2026 р.</p>
+    <p>Будь ласка, уважно прочитайте ці Умови використання перед тим, як користуватися <strong>Daily Rune</strong> («Додаток»). Завантажуючи або використовуючи Додаток, ви погоджуєтеся з цими умовами. Якщо ви не погоджуєтеся — не використовуйте Додаток.</p>
+
+    <h2>1. Про Додаток</h2>
+    <p>Daily Rune — це розважальний додаток для особистого роздуму на основі символіки старшого футарку. Додаток призначений виключно для розваги, медитації та особистого роздуму. Рунічні ворожіння, надані Додатком, не замінюють жодних професійних порад — медичних, юридичних, фінансових або психологічних.</p>
+
+    <h2>2. Вікові вимоги</h2>
+    <p>Додаток призначений для користувачів віком від 13 років. Використовуючи Додаток, ви підтверджуєте, що відповідаєте цій вимозі. Користувачам до 18 років необхідна згода батьків або опікунів.</p>
+
+    <h2>3. Ліцензія</h2>
+    <p>Ми надаємо вам обмежену, невиключну, непередавану, відкличну ліцензію на використання Додатку в особистих, некомерційних цілях. Вам забороняється:</p>
+    <ul>
+      <li>Копіювати, змінювати або розповсюджувати Додаток чи його контент</li>
+      <li>Здійснювати зворотний інжиніринг або намагатися отримати вихідний код</li>
+      <li>Використовувати Додаток у незаконних цілях</li>
+      <li>Продавати або передавати в субліцензію доступ до Додатку</li>
+    </ul>
+
+    <h2>4. Покупки в додатку</h2>
+    <p>Додаток пропонує одноразову покупку преміум-розблокування, яка знімає денний ліміт ворожінь. Усі покупки обробляються Google Play або Apple App Store відповідно до їхніх умов та політик повернення коштів. Ми не обробляємо платіжну інформацію безпосередньо.</p>
+    <p>Покупки не підлягають поверненню, крім випадків, передбачених чинним законодавством або політикою повернення платформи. Якщо у вас виникла проблема з покупкою, зверніться до нас за адресою <a href="mailto:runes.chevit@gmail.com">runes.chevit@gmail.com</a>.</p>
+
+    <h2>5. Обмеження безкоштовного рівня</h2>
+    <p>Безкоштовні користувачі обмежені певною кількістю ворожінь на день відповідно до налаштувань Додатку. Цей ліміт може змінюватися з часом. Ми залишаємо за собою право змінювати умови безкоштовного рівня в будь-який час без попереднього повідомлення.</p>
+
+    <h2>6. Реклама</h2>
+    <p>Користувачі безкоштовного рівня можуть бачити рекламу від Google AdMob. Преміум-користувачі реклами не бачать. Ми не несемо відповідальності за зміст реклами третіх сторін, що відображається в Додатку.</p>
+
+    <h2>7. Відмова від гарантій</h2>
+    <p>Додаток надається «як є» та «як доступно» без будь-яких явних або неявних гарантій. Ми не гарантуємо, що Додаток працюватиме без перебоїв або помилок. Рунічні ворожіння генеруються виключно для розваги та не несуть жодних гарантій точності чи результату.</p>
+
+    <h2>8. Обмеження відповідальності</h2>
+    <p>У межах, дозволених законом, ми не несемо відповідальності за будь-які непрямі, випадкові, спеціальні або наслідкові збитки, що виникають внаслідок використання Додатку, включаючи рішення, прийняті на основі рунічних ворожінь.</p>
+
+    <h2>9. Інтелектуальна власність</h2>
+    <p>Весь контент Додатку — включаючи описи рун, зображення, дизайн та код — належить нам або ліцензований нам і захищений відповідним законодавством про інтелектуальну власність. Ви не можете відтворювати або використовувати будь-який контент Додатку поза ним без письмового дозволу.</p>
+
+    <h2>10. Зміни до умов</h2>
+    <p>Ми можемо час від часу оновлювати ці Умови використання. Зміни будуть опубліковані на цій сторінці з оновленою датою. Продовження використання Додатку після змін означає прийняття оновлених умов.</p>
+
+    <h2>11. Застосовне право</h2>
+    <p>Ці Умови регулюються законодавством України. Будь-які спори вирішуються відповідно до чинного законодавства України.</p>
+
+    <h2>12. Зв'яжіться з нами</h2>
+    <p>Якщо у вас є запитання щодо цих Умов використання, будь ласка, зв'яжіться з нами:<br />
+    <strong><a href="mailto:runes.chevit@gmail.com">runes.chevit@gmail.com</a></strong></p>
+  </div>
+
+  <script>
+    function setLang(lang) {
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.style.display = el.dataset.lang === lang ? 'block' : 'none';
+      });
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+      });
+      document.documentElement.lang = lang;
+    }
+    setLang('en');
+  </script>
 
 </body>
 </html>
