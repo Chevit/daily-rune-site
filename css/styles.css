@@ -312,3 +312,109 @@ body::before {
   .page { transition: none; }
   .reveal-btn { transition: none; }
 }
+
+/* ── Subpage layout ── */
+.subpage-title {
+  font-size: 28px;
+  margin-top: 24px;
+}
+.back-link {
+  display: block;
+  text-align: center;
+  font-size: 11px;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: color 0.2s;
+  margin-top: 8px;
+  margin-bottom: 40px;
+}
+.back-link:hover { color: var(--accent); }
+
+/* ── Subpage content card ── */
+.content-card {
+  background: var(--stone);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 28px 24px;
+  width: 100%;
+}
+
+/* ── Subpage typography ── */
+.subpage-content h2 {
+  font-size: 12px;
+  color: var(--accent);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: normal;
+  margin-top: 32px;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+.subpage-content h3 {
+  font-size: 13px;
+  color: var(--text);
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 6px;
+}
+.subpage-content p,
+.subpage-content li {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text);
+}
+.subpage-content ul {
+  padding-left: 20px;
+  margin: 8px 0;
+}
+.subpage-content a {
+  color: var(--accent);
+}
+.subpage-content .last-updated,
+.subpage-content .subtitle {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 24px;
+}
+.subpage-contact-box {
+  background: rgba(200,135,58,0.06);
+  border: 1px solid rgba(200,135,58,0.18);
+  border-radius: 6px;
+  padding: 20px 24px;
+  margin-top: 24px;
+}
+.subpage-contact-box p {
+  margin: 0 0 8px;
+}
+.subpage-contact-box a.email {
+  display: inline-block;
+  margin-top: 8px;
+  color: var(--accent);
+  font-size: 15px;
+  letter-spacing: 0.5px;
+}
+.subpage-footer {
+  margin-top: 36px;
+  font-size: 11px;
+  color: var(--muted);
+  text-align: center;
+  letter-spacing: 1px;
+}
+.subpage-footer a {
+  color: var(--muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  transition: color 0.2s;
+}
+.subpage-footer a:hover { color: var(--accent); }
+
+/* ── Reduced motion: subpages ── */
+@media (prefers-reduced-motion: reduce) {
+  .back-link { transition: none; }
+}
