@@ -2,12 +2,9 @@
 // Run: node scripts/test-rune-engine.mjs
 
 import { getDailyRune } from '../js/rune-engine.js';
+import { RUNES } from '../js/runes.js';
 
-const VALID_IDS = [
-  'fehu','uruz','thurisaz','ansuz','raidho','kenaz','gebo','wunjo',
-  'hagalaz','nauthiz','isa','jera','eihwaz','perthro','algiz','sowilo',
-  'tiwaz','berkano','ehwaz','mannaz','laguz','ingwaz','dagaz','othala','blank',
-];
+const VALID_IDS = RUNES.map(r => r.id);
 
 // Test 1: returns a string
 const id = getDailyRune();
