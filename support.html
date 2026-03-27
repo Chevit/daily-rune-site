@@ -1,202 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <title>Support — Daily Rune</title>
-  <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 40px 24px;
-      color: #222;
-      line-height: 1.7;
-    }
-    h1 { font-size: 2rem; margin-bottom: 4px; }
-    h2 { font-size: 1.15rem; margin-top: 36px; margin-bottom: 8px; border-bottom: 1px solid #ddd; padding-bottom: 4px; }
-    h3 { font-size: 1rem; margin-top: 20px; margin-bottom: 4px; font-weight: 600; }
-    p, li { font-size: 0.97rem; }
-    ul { padding-left: 20px; }
-    .subtitle { color: #888; font-size: 0.95rem; margin-bottom: 36px; }
-    .contact-box {
-      background: #f7f7f8;
-      border-radius: 10px;
-      padding: 24px 28px;
-      margin-top: 32px;
-    }
-    .contact-box p { margin: 0 0 8px; }
-    a { color: #4a5568; }
-    a.email {
-      display: inline-block;
-      margin-top: 8px;
-      font-weight: 600;
-      font-size: 1rem;
-      color: #2d3748;
-    }
-    .lang-switcher {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 32px;
-    }
-    .lang-btn {
-      padding: 6px 18px;
-      border: 1px solid #ccc;
-      border-radius: 20px;
-      background: none;
-      cursor: pointer;
-      font-size: 0.9rem;
-      color: #555;
-    }
-    .lang-btn.active {
-      background: #1a1a2e;
-      color: #fff;
-      border-color: #1a1a2e;
-    }
-    [data-lang] { display: none; }
-  </style>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <div class="page page--wide">
 
-  <div class="lang-switcher">
-    <button class="lang-btn active" onclick="setLang('en')">EN</button>
-    <button class="lang-btn" onclick="setLang('uk')">UK</button>
-  </div>
+    <header class="site-header">
+      <div class="locale-toggle">
+        <button class="locale-btn active" data-locale="en">EN</button>
+        <span class="locale-sep">|</span>
+        <button class="locale-btn" data-locale="ua">UA</button>
+      </div>
+      <h1 class="app-title subpage-title">
+        <span data-lang="en">Support</span>
+        <span data-lang="ua">Підтримка</span>
+      </h1>
+      <a href="index.html" class="back-link">← Daily Rune</a>
+    </header>
 
-  <!-- ENGLISH -->
-  <div data-lang="en">
-    <h1>Support</h1>
-    <p class="subtitle">Daily Rune — Elder Futhark Divination App</p>
+    <div class="content-card subpage-content">
 
-    <h2>Frequently Asked Questions</h2>
+      <!-- ENGLISH -->
+      <div data-lang="en">
+        <span class="subtitle">Daily Rune — Elder Futhark Divination App</span>
 
-    <h3>How many readings do I get for free?</h3>
-    <p>Free users receive a set number of readings per day. Once the daily limit is reached, you can wait until the next day or unlock unlimited readings with a one-time premium purchase.</p>
+        <h2>Frequently Asked Questions</h2>
 
-    <h3>How do I unlock unlimited readings?</h3>
-    <p>Tap the unlock button on the Home screen or when you reach your daily limit. The premium upgrade is a one-time purchase — you will never be charged again.</p>
+        <h3>How many readings do I get for free?</h3>
+        <p>Free users receive a set number of readings per day. Once the daily limit is reached, you can wait until the next day or unlock unlimited readings with a one-time premium purchase.</p>
 
-    <h3>I purchased premium but it's not showing up</h3>
-    <p>Try the following steps:</p>
-    <ul>
-      <li>Close and reopen the App</li>
-      <li>Make sure you are connected to the internet</li>
-      <li>Check that you are signed into the same Google Play / App Store account used for the purchase</li>
-      <li>Uninstall and reinstall the App — your purchase will be restored automatically</li>
-    </ul>
-    <p>If the issue persists, please contact us with your order number.</p>
+        <h3>How do I unlock unlimited readings?</h3>
+        <p>Tap the unlock button on the Home screen or when you reach your daily limit. The premium upgrade is a one-time purchase — you will never be charged again.</p>
 
-    <h3>How does the shake-to-draw feature work?</h3>
-    <p>On the rune board screen, give your phone a short shake and the runes will be shuffled. Tap a rune to select it. In three-rune mode, select three runes one at a time.</p>
+        <h3>I purchased premium but it's not showing up</h3>
+        <p>Try the following steps:</p>
+        <ul>
+          <li>Close and reopen the App</li>
+          <li>Make sure you are connected to the internet</li>
+          <li>Check that you are signed into the same Google Play / App Store account used for the purchase</li>
+          <li>Uninstall and reinstall the App — your purchase will be restored automatically</li>
+        </ul>
+        <p>If the issue persists, please contact us with your order number.</p>
 
-    <h3>What is a reversed rune?</h3>
-    <p>Some runes have a reversed (merkstave) meaning when drawn upside-down. The App randomly determines reversal for each rune drawn, adding depth to your reading.</p>
+        <h3>How does the shake-to-draw feature work?</h3>
+        <p>On the rune board screen, give your phone a short shake and the runes will be shuffled. Tap a rune to select it. In three-rune mode, select three runes one at a time.</p>
 
-    <h3>How do I change the reading style?</h3>
-    <p>Go to <strong>Settings</strong> and toggle between <em>Traditional</em> and <em>Casual</em> reading styles. Traditional uses classical rune interpretations; Casual uses a more modern, conversational tone.</p>
+        <h3>What is a reversed rune?</h3>
+        <p>Some runes have a reversed (merkstave) meaning when drawn upside-down. The App randomly determines reversal for each rune drawn, adding depth to your reading.</p>
 
-    <h3>How do I turn off analytics?</h3>
-    <p>Go to <strong>Settings</strong> and toggle off <em>Help improve the app</em>. This immediately disables all analytics data collection.</p>
+        <h3>How do I change the reading style?</h3>
+        <p>Go to <strong>Settings</strong> and toggle between <em>Traditional</em> and <em>Casual</em> reading styles. Traditional uses classical rune interpretations; Casual uses a more modern, conversational tone.</p>
 
-    <h3>How do I turn off personalised ads?</h3>
-    <p>On Android: <em>Settings → Google → Ads → Opt out of Ads Personalisation</em>.<br />
-    On iOS: <em>Settings → Privacy → Tracking</em> and disable tracking for Daily Rune.</p>
+        <h3>How do I turn off analytics?</h3>
+        <p>Go to <strong>Settings</strong> and toggle off <em>Help improve the app</em>. This immediately disables all analytics data collection.</p>
 
-    <h3>The app is crashing or not working correctly</h3>
-    <p>Try these steps first:</p>
-    <ul>
-      <li>Update the App to the latest version from the store</li>
-      <li>Restart your device</li>
-      <li>Uninstall and reinstall the App</li>
-    </ul>
-    <p>If the problem continues, please email us with a description of the issue and your device model and OS version.</p>
+        <h3>How do I turn off personalised ads?</h3>
+        <p>On Android: <em>Settings → Google → Ads → Opt out of Ads Personalisation</em>.<br>
+        On iOS: <em>Settings → Privacy → Tracking</em> and disable tracking for Daily Rune.</p>
 
-    <h2>Contact Us</h2>
-    <div class="contact-box">
-      <p>Can't find an answer above? We're happy to help.</p>
-      <p>Send us an email and we'll get back to you as soon as possible.</p>
-      <a class="email" href="mailto:runes.chevit@gmail.com">runes.chevit@gmail.com</a>
+        <h3>The app is crashing or not working correctly</h3>
+        <p>Try these steps first:</p>
+        <ul>
+          <li>Update the App to the latest version from the store</li>
+          <li>Restart your device</li>
+          <li>Uninstall and reinstall the App</li>
+        </ul>
+        <p>If the problem continues, please email us with a description of the issue and your device model and OS version.</p>
+
+        <h2>Contact Us</h2>
+        <div class="subpage-contact-box">
+          <p>Can't find an answer above? We're happy to help.</p>
+          <p>Send us an email and we'll get back to you as soon as possible.</p>
+          <a class="email" href="mailto:runes.chevit@gmail.com">runes.chevit@gmail.com</a>
+        </div>
+
+        <p class="subpage-footer">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          &nbsp;·&nbsp;
+          <a href="terms-of-use.html">Terms of Use</a>
+        </p>
+      </div>
+
+      <!-- UKRAINIAN -->
+      <div data-lang="ua">
+        <span class="subtitle">Daily Rune — Додаток для ворожіння на рунах старшого футарку</span>
+
+        <h2>Часті запитання</h2>
+
+        <h3>Скільки ворожінь я отримую безкоштовно?</h3>
+        <p>Безкоштовні користувачі отримують певну кількість ворожінь на день. Після досягнення денного ліміту ви можете зачекати до наступного дня або розблокувати необмежені ворожіння одноразовою преміум-покупкою.</p>
+
+        <h3>Як розблокувати необмежені ворожіння?</h3>
+        <p>Натисніть кнопку розблокування на головному екрані або коли досягнете денного ліміту. Преміум-розблокування — це одноразова покупка, більше з вас нічого не стягуватиметься.</p>
+
+        <h3>Я придбав преміум, але він не відображається</h3>
+        <p>Спробуйте наступні кроки:</p>
+        <ul>
+          <li>Закрийте та знову відкрийте Додаток</li>
+          <li>Переконайтеся, що ви підключені до інтернету</li>
+          <li>Перевірте, що ви увійшли в той самий обліковий запис Google Play / App Store, який використовувався для покупки</li>
+          <li>Видаліть та перевстановіть Додаток — ваша покупка відновиться автоматично</li>
+        </ul>
+        <p>Якщо проблема не зникає, зв'яжіться з нами, вказавши номер замовлення.</p>
+
+        <h3>Як працює функція струшування?</h3>
+        <p>На екрані рунічної дошки злегка струсніть телефон — руни перемішаються. Торкніться руни, щоб вибрати її. У режимі трьох рун вибирайте по одній руні за раз.</p>
+
+        <h3>Що таке перевернута руна?</h3>
+        <p>Деякі руни мають перевернуте (меркставе) значення, коли витягуються догори дном. Додаток випадково визначає перевернутість кожної витягнутої руни, додаючи глибини вашому ворожінню.</p>
+
+        <h3>Як змінити стиль читання?</h3>
+        <p>Перейдіть до <strong>Налаштувань</strong> та переключіться між стилями <em>Традиційний</em> та <em>Casual</em>. Традиційний використовує класичні тлумачення рун; Casual — сучасніший, розмовний тон.</p>
+
+        <h3>Як вимкнути аналітику?</h3>
+        <p>Перейдіть до <strong>Налаштувань</strong> та вимкніть перемикач <em>Допомогти покращити додаток</em>. Це негайно вимкне збір аналітичних даних.</p>
+
+        <h3>Як вимкнути персоналізовану рекламу?</h3>
+        <p>На Android: <em>Налаштування → Google → Реклама → Відмовитися від персоналізації реклами</em>.<br>
+        На iOS: <em>Налаштування → Конфіденційність → Відстеження</em> та вимкніть відстеження для Daily Rune.</p>
+
+        <h3>Додаток зависає або працює некоректно</h3>
+        <p>Спробуйте спочатку ці кроки:</p>
+        <ul>
+          <li>Оновіть Додаток до останньої версії в магазині</li>
+          <li>Перезавантажте пристрій</li>
+          <li>Видаліть та перевстановіть Додаток</li>
+        </ul>
+        <p>Якщо проблема залишається, надішліть нам листа з описом проблеми, моделлю пристрою та версією операційної системи.</p>
+
+        <h2>Зв'яжіться з нами</h2>
+        <div class="subpage-contact-box">
+          <p>Не знайшли відповідь вище? Ми раді допомогти.</p>
+          <p>Надішліть нам листа, і ми відповімо якнайшвидше.</p>
+          <a class="email" href="mailto:runes.chevit@gmail.com">runes.chevit@gmail.com</a>
+        </div>
+
+        <p class="subpage-footer">
+          <a href="privacy-policy.html">Політика конфіденційності</a>
+          &nbsp;·&nbsp;
+          <a href="terms-of-use.html">Умови використання</a>
+        </p>
+      </div>
+
     </div>
-
-    <p style="margin-top: 40px; font-size: 0.85rem; color: #aaa;">
-      <a href="privacy-policy.html">Privacy Policy</a> &nbsp;·&nbsp;
-      <a href="terms-of-use.html">Terms of Use</a>
-    </p>
   </div>
 
-  <!-- UKRAINIAN -->
-  <div data-lang="uk">
-    <h1>Підтримка</h1>
-    <p class="subtitle">Daily Rune — Додаток для ворожіння на рунах старшого футарку</p>
-
-    <h2>Часті запитання</h2>
-
-    <h3>Скільки ворожінь я отримую безкоштовно?</h3>
-    <p>Безкоштовні користувачі отримують певну кількість ворожінь на день. Після досягнення денного ліміту ви можете зачекати до наступного дня або розблокувати необмежені ворожіння одноразовою преміум-покупкою.</p>
-
-    <h3>Як розблокувати необмежені ворожіння?</h3>
-    <p>Натисніть кнопку розблокування на головному екрані або коли досягнете денного ліміту. Преміум-розблокування — це одноразова покупка, більше з вас нічого не стягуватиметься.</p>
-
-    <h3>Я придбав преміум, але він не відображається</h3>
-    <p>Спробуйте наступні кроки:</p>
-    <ul>
-      <li>Закрийте та знову відкрийте Додаток</li>
-      <li>Переконайтеся, що ви підключені до інтернету</li>
-      <li>Перевірте, що ви увійшли в той самий обліковий запис Google Play / App Store, який використовувався для покупки</li>
-      <li>Видаліть та перевстановіть Додаток — ваша покупка відновиться автоматично</li>
-    </ul>
-    <p>Якщо проблема не зникає, зв'яжіться з нами, вказавши номер замовлення.</p>
-
-    <h3>Як працює функція струшування?</h3>
-    <p>На екрані рунічної дошки злегка струсніть телефон — руни перемішаються. Торкніться руни, щоб вибрати її. У режимі трьох рун вибирайте по одній руні за раз.</p>
-
-    <h3>Що таке перевернута руна?</h3>
-    <p>Деякі руни мають перевернуте (меркставе) значення, коли витягуються догори дном. Додаток випадково визначає перевернутість кожної витягнутої руни, додаючи глибини вашому ворожінню.</p>
-
-    <h3>Як змінити стиль читання?</h3>
-    <p>Перейдіть до <strong>Налаштувань</strong> та переключіться між стилями <em>Традиційний</em> та <em>Casual</em>. Традиційний використовує класичні тлумачення рун; Casual — сучасніший, розмовний тон.</p>
-
-    <h3>Як вимкнути аналітику?</h3>
-    <p>Перейдіть до <strong>Налаштувань</strong> та вимкніть перемикач <em>Допомогти покращити додаток</em>. Це негайно вимкне збір аналітичних даних.</p>
-
-    <h3>Як вимкнути персоналізовану рекламу?</h3>
-    <p>На Android: <em>Налаштування → Google → Реклама → Відмовитися від персоналізації реклами</em>.<br />
-    На iOS: <em>Налаштування → Конфіденційність → Відстеження</em> та вимкніть відстеження для Daily Rune.</p>
-
-    <h3>Додаток зависає або працює некоректно</h3>
-    <p>Спробуйте спочатку ці кроки:</p>
-    <ul>
-      <li>Оновіть Додаток до останньої версії в магазині</li>
-      <li>Перезавантажте пристрій</li>
-      <li>Видаліть та перевстановіть Додаток</li>
-    </ul>
-    <p>Якщо проблема залишається, надішліть нам листа з описом проблеми, моделлю пристрою та версією операційної системи.</p>
-
-    <h2>Зв'яжіться з нами</h2>
-    <div class="contact-box">
-      <p>Не знайшли відповідь вище? Ми раді допомогти.</p>
-      <p>Надішліть нам листа, і ми відповімо якнайшвидше.</p>
-      <a class="email" href="mailto:runes.chevit@gmail.com">runes.chevit@gmail.com</a>
-    </div>
-
-    <p style="margin-top: 40px; font-size: 0.85rem; color: #aaa;">
-      <a href="privacy-policy.html">Політика конфіденційності</a> &nbsp;·&nbsp;
-      <a href="terms-of-use.html">Умови використання</a>
-    </p>
-  </div>
-
-  <script>
-    function setLang(lang) {
-      document.querySelectorAll('[data-lang]').forEach(el => {
-        el.style.display = el.dataset.lang === lang ? 'block' : 'none';
-      });
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
-      });
-      document.documentElement.lang = lang;
-    }
-    setLang('en');
-  </script>
-
+  <script type="module" src="js/page-locale.js"></script>
 </body>
 </html>

@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \"import\\(''./js/runes.js''\\).then\\(m => console.log\\(m.RUNES.length\\)\\)\")",
+      "Bash(node -e \"import\\(''./js/runes.js''\\).then\\(m => { const ids = m.RUNES.map\\(r => r.id\\); const dupes = ids.filter\\(\\(id, i\\) => ids.indexOf\\(id\\) !== i\\); console.log\\(''duplicate ids:'', dupes.length ? dupes : ''none''\\); }\\)\")",
+      "Bash(node -e \"const t = JSON.parse\\(require\\(''fs''\\).readFileSync\\(''rune-translations-casual.json'',''utf8''\\)\\); console.log\\(Object.keys\\(t\\).slice\\(0,5\\)\\); console.log\\(JSON.stringify\\(t[''fehu''][''uk''], null, 2\\)\\);\")",
+      "Bash(node scripts/gen-locales.mjs)",
+      "Bash(node *",
+      "Bash(python3 -c \":*)"
+      "Bash(python3 *)"
+    ]
+  }
+}
