@@ -16,6 +16,7 @@ export class UI {
 
     // Pre-populate card front (hidden behind card until flip)
     const rune = RUNES.find(r => r.id === runeId);
+    if (!rune) { console.error(`Unknown rune id: "${runeId}"`); return; }
     document.getElementById('runeGlyph').textContent = rune.unicodeSymbol;
     document.getElementById('runeNameCard').textContent =
       LOCALES[locale].runes[runeId].name.toUpperCase();
