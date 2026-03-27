@@ -7,6 +7,14 @@ let currentLocale = localStorage.getItem('locale') || 'en';
 const ui = new UI();
 ui.render(runeId, currentLocale);
 ui.initScrollReveals();
+updateFooterLinks(currentLocale);
+
+function updateFooterLinks(locale) {
+  ['privacyLink', 'supportLink', 'termsLink'].forEach(id => {
+    const el = document.getElementById(id);
+    el.href = `${el.dataset.href}?locale=${locale}`;
+  });
+}
 
 function reveal() {
   ui.flip();
@@ -23,5 +31,6 @@ document.querySelectorAll('.locale-btn').forEach(btn => {
     currentLocale = newLocale;
     localStorage.setItem('locale', newLocale);
     ui.switchLocale(newLocale);
+    updateFooterLinks(newLocale);
   });
 });
