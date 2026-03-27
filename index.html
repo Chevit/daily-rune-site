@@ -6,285 +6,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <title>Daily Rune</title>
-  <style>
-    :root {
-      --bg:     #1a1410;
-      --stone:  #2d2820;
-      --glyph:  #e8dcc8;
-      --accent: #c8873a;
-      --text:   #f0e8d8;
-      --muted:  #a09080;
-      --border: #3d3830;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: Georgia, 'Times New Roman', serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    /* faint runic wallpaper */
-    body::before {
-      content: 'ᚠ ᚢ ᚦ ᚨ ᚱ ᚲ ᚷ ᚹ ᚺ ᚾ ᛁ ᛃ ᛇ ᛈ ᛉ ᛊ ᛏ ᛒ ᛖ ᛗ ᛚ ᛜ ᛞ ᛟ ᚠ ᚢ ᚦ ᚨ ᚱ ᚲ ᚷ ᚹ ᚺ ᚾ ᛁ ᛃ ᛇ ᛈ ᛉ ᛊ ᛏ ᛒ ᛖ ᛗ ᛚ ᛜ ᛞ ᛟ';
-      position: fixed;
-      inset: 0;
-      font-size: 20px;
-      letter-spacing: 10px;
-      line-height: 3;
-      color: rgba(200,135,58,0.035);
-      pointer-events: none;
-      z-index: 0;
-      padding: 24px;
-      word-break: break-all;
-    }
-
-    .page {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 480px;
-      padding: 40px 24px 64px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    /* ── Header ── */
-    .app-title {
-      font-size: 40px;
-      font-weight: normal;
-      color: var(--text);
-      letter-spacing: 1px;
-      text-align: center;
-      margin-top: 16px;
-    }
-    .app-subtitle {
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 3.5px;
-      text-transform: uppercase;
-      text-align: center;
-      margin-top: 8px;
-      margin-bottom: 40px;
-    }
-    .date-label {
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-    }
-
-    /* ── Flip card ── */
-    .card-container {
-      perspective: 1000px;
-      width: 190px;
-      height: 230px;
-      cursor: pointer;
-      margin-bottom: 28px;
-      flex-shrink: 0;
-    }
-    .card {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      transform-style: preserve-3d;
-      transition: transform 0.75s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .card.flipped { transform: rotateY(180deg); }
-
-    .card-face {
-      position: absolute;
-      inset: 0;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-      border-radius: 8px;
-      background: var(--stone);
-      border: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-    .card-front { transform: rotateY(180deg); }
-
-    .card-back-glyph {
-      font-size: 72px;
-      color: var(--border);
-      user-select: none;
-      line-height: 1;
-    }
-    .card-back-label {
-      font-size: 10px;
-      color: var(--muted);
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-    }
-
-    .rune-glyph {
-      font-size: 96px;
-      color: var(--glyph);
-      line-height: 1;
-      user-select: none;
-    }
-    .rune-name-card {
-      font-size: 14px;
-      color: var(--accent);
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-    }
-
-    /* ── Reveal button ── */
-    .reveal-btn {
-      background: var(--stone);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      color: var(--text);
-      font-family: Georgia, serif;
-      font-size: 17px;
-      letter-spacing: 1px;
-      padding: 17px 0;
-      cursor: pointer;
-      width: 100%;
-      max-width: 320px;
-      margin-bottom: 36px;
-      transition: border-color 0.2s, background 0.2s, opacity 0.2s;
-    }
-    .reveal-btn:hover:not(:disabled) {
-      background: #332d26;
-      border-color: var(--accent);
-    }
-    .reveal-btn:disabled {
-      opacity: 0.45;
-      cursor: default;
-    }
-
-    /* ── Meaning card ── */
-    .meaning-card {
-      background: var(--stone);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 28px 24px;
-      width: 100%;
-      opacity: 0;
-      transform: translateY(14px);
-      transition: opacity 0.55s ease 0.35s, transform 0.55s ease 0.35s;
-      pointer-events: none;
-    }
-    .meaning-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-
-    .keywords {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 18px;
-    }
-    .keyword {
-      font-size: 10px;
-      color: var(--accent);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      background: rgba(200,135,58,0.09);
-      border: 1px solid rgba(200,135,58,0.22);
-      border-radius: 3px;
-      padding: 3px 8px;
-    }
-    .meaning-text {
-      font-size: 15px;
-      line-height: 1.8;
-      color: var(--text);
-    }
-
-    /* ── Divider ── */
-    .divider {
-      width: 48px;
-      height: 1px;
-      background: var(--border);
-      margin: 44px 0;
-    }
-
-    /* ── Download section ── */
-    .download-section {
-      text-align: center;
-      width: 100%;
-    }
-    .download-label {
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-    .download-buttons {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .download-btn {
-      background: var(--stone);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      color: var(--text);
-      font-family: Georgia, serif;
-      font-size: 14px;
-      letter-spacing: 0.5px;
-      padding: 13px 26px;
-      text-decoration: none;
-      transition: border-color 0.2s, color 0.2s;
-      white-space: nowrap;
-    }
-    .download-btn:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    /* ── Footer ── */
-    .footer-nav {
-      display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .footer-nav a {
-      font-size: 11px;
-      color: var(--muted);
-      text-decoration: none;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-    .footer-nav a:hover { color: var(--accent); }
-  </style>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <div class="page">
 
-    <h1 class="app-title">Daily Rune</h1>
-    <p class="app-subtitle">Elder Futhark Divination</p>
-
-    <p class="date-label" id="dateLabel"></p>
+    <!-- Header -->
+    <header class="site-header">
+      <div class="locale-toggle">
+        <button class="locale-btn active" data-locale="en">EN</button>
+        <span class="locale-sep">|</span>
+        <button class="locale-btn" data-locale="ua">UA</button>
+      </div>
+      <h1 class="app-title" id="appTitle"></h1>
+      <p class="app-subtitle" id="appSubtitle"></p>
+      <p class="date-label" id="dateLabel"></p>
+    </header>
 
     <!-- Flip card -->
-    <div class="card-container" id="cardContainer" onclick="revealRune()" title="Reveal today's rune">
+    <div class="card-container" id="cardContainer">
       <div class="card" id="card">
-        <!-- Back face (unrevealed) -->
         <div class="card-face card-back">
           <span class="card-back-glyph">ᚠ</span>
-          <span class="card-back-label">Tap to reveal</span>
+          <span class="card-back-label" id="cardBackLabel"></span>
         </div>
-        <!-- Front face (revealed) -->
         <div class="card-face card-front">
           <span class="rune-glyph" id="runeGlyph"></span>
           <span class="rune-name-card" id="runeNameCard"></span>
@@ -292,7 +37,7 @@
       </div>
     </div>
 
-    <button class="reveal-btn" id="revealBtn" onclick="revealRune()">Reveal Today's Rune</button>
+    <button class="reveal-btn" id="revealBtn"></button>
 
     <!-- Meaning panel, hidden until reveal -->
     <div class="meaning-card" id="meaningCard">
@@ -302,197 +47,27 @@
 
     <div class="divider"></div>
 
-    <div class="download-section">
-      <p class="download-label">Full readings in the app</p>
+    <!-- Download CTA -->
+    <div class="download-section reveal-section">
+      <p class="download-label" id="downloadLabel"></p>
       <div class="download-buttons">
-        <a class="download-btn" href="https://apps.apple.com/app/daily-rune/id6745174491" target="_blank" rel="noopener">App Store</a>
-        <a class="download-btn" href="https://play.google.com/store/apps/details?id=com.che.vit.runecast" target="_blank" rel="noopener">Google Play</a>
+        <a href="https://apps.apple.com/app/daily-rune/id6745174491" target="_blank" rel="noopener">
+          <img src="assets/app-store-badge.svg" alt="Download on the App Store" width="160" height="54">
+        </a>
       </div>
     </div>
 
     <div class="divider"></div>
 
-    <nav class="footer-nav">
-      <a href="privacy-policy.html">Privacy Policy</a>
-      <a href="support.html">Support</a>
-      <a href="terms-of-use.html">Terms of Use</a>
+    <!-- Footer -->
+    <nav class="footer-nav reveal-section">
+      <a href="privacy-policy.html" id="privacyLink"></a>
+      <a href="support.html" id="supportLink"></a>
+      <a href="terms-of-use.html" id="termsLink"></a>
     </nav>
 
   </div>
 
-  <script>
-    const RUNES = [
-      {
-        id: 'fehu', name: 'Fehu', unicodeSymbol: 'ᚠ',
-        keywords: ['abundance', 'wealth', 'fertility', 'new beginnings'],
-        uprightMeaning: 'Fehu speaks of cattle — the ancient measure of wealth — and carries the energy of abundance in motion. This is not idle gold locked in a vault, but living, breathing prosperity that grows, multiplies, and flows. When Fehu appears, resources are available to you: financial opportunity, creative energy, or the raw material from which something new can be built. It asks you to receive without shame and to steward what comes with care. Wealth gathered and never shared stagnates; wealth circulated returns enriched. Consider where in your life abundance is trying to reach you, and whether you are open to receiving it.'
-      },
-      {
-        id: 'uruz', name: 'Uruz', unicodeSymbol: 'ᚢ',
-        keywords: ['strength', 'vitality', 'endurance', 'health'],
-        uprightMeaning: 'Uruz is the wild ox — immense, untamed, and full of vital force. This rune carries the energy of raw physical and inner strength, the kind that does not ask permission and does not negotiate with weakness. When Uruz appears, something powerful is moving in your life or within you. A period of difficulty may be ending, replaced by a surge of health, confidence, or momentum. Trust your instincts. Move boldly. You are more capable than you have allowed yourself to believe.'
-      },
-      {
-        id: 'thurisaz', name: 'Thurisaz', unicodeSymbol: 'ᚦ',
-        keywords: ['protection', 'threshold', 'conflict', 'defense'],
-        uprightMeaning: 'Thurisaz is the thorn — the gate-guardian, the force that both wounds and protects. It marks a threshold between what was and what is to come. This rune does not smooth over difficulty. Instead, it places you at the edge of something that demands a choice. A conflict may be unavoidable, a confrontation necessary, an old pattern requiring a decisive break. Thurisaz can also appear as protection — a warning to pause before crossing a boundary. Not everything waiting on the other side is as it appears. The thorn guards the rose.'
-      },
-      {
-        id: 'ansuz', name: 'Ansuz', unicodeSymbol: 'ᚨ',
-        keywords: ['communication', 'wisdom', 'signals', 'messages'],
-        uprightMeaning: 'Ansuz carries the breath of Odin — the divine word, the message, the signal. Something is trying to reach you. A conversation may carry more meaning than its surface words suggest; a dream, a repeated encounter, a feeling in the gut — these are channels. Ansuz calls you to pay attention, to listen with more than your ears. It also governs your own voice: this is a favorable time to speak truth, to write, to teach, or to reach out to someone you have been putting off. Clarity is available. The transmission is clear if you tune in.'
-      },
-      {
-        id: 'raidho', name: 'Raidho', unicodeSymbol: 'ᚱ',
-        keywords: ['journey', 'movement', 'right action', 'rhythm'],
-        uprightMeaning: 'Raidho is the wheel — the journey, both literal and inner. It speaks of movement that is purposeful and aligned, of being in the right place at the right time because you are moving with the rhythm of your own life rather than against it. If travel is on your horizon, Raidho blesses it. It is also a rune of right action — doing the thing that must be done, in the right order, at the right time. There is a natural rhythm to events, and Raidho invites you to find it rather than forcing your own tempo.'
-      },
-      {
-        id: 'kenaz', name: 'Kenaz', unicodeSymbol: 'ᚲ',
-        keywords: ['clarity', 'creativity', 'illumination', 'craft'],
-        uprightMeaning: 'Kenaz is the torch held aloft in the dark — the creative fire, the craft well practiced, the moment when confusion gives way to clarity. Something that was murky is becoming clear; something you have been trying to create is finding its form. Kenaz favors all creative work — writing, building, designing, problem-solving — and encourages you to bring your full attention and skill to whatever you are making. The torch of Kenaz is meant to illuminate, not to consume. Use your fire with intention.'
-      },
-      {
-        id: 'gebo', name: 'Gebo', unicodeSymbol: 'ᚷ',
-        keywords: ['gift', 'exchange', 'generosity', 'partnership'],
-        uprightMeaning: 'Gebo is the mark of the gift — and in the old Norse understanding, a gift always creates a bond. This rune speaks of exchange in its most balanced form: giving and receiving held in equal measure. It may mark the arrival of a genuine gift, an opportunity, or a partnership rooted in mutual respect and fair exchange. It is also a reminder that receiving is not weakness; to refuse a gift graciously offered is to break the circuit of generosity. Where in your life is a genuine exchange of value happening? Honor it.'
-      },
-      {
-        id: 'wunjo', name: 'Wunjo', unicodeSymbol: 'ᚹ',
-        keywords: ['joy', 'harmony', 'belonging', 'fulfillment'],
-        uprightMeaning: 'Wunjo is joy — the deep, settled kind that comes not from excitement but from being exactly where you belong. This rune marks a time of harmony, of things coming together in a way that feels right and earned. The conflict that has been grinding you down may ease; a relationship may deepen into genuine warmth; a long effort may finally show its fruit. Wunjo is also the joy of community, of shared purpose and belonging. Do not dismiss this moment. Happiness, when it arrives, deserves to be fully inhabited.'
-      },
-      {
-        id: 'hagalaz', name: 'Hagalaz', unicodeSymbol: 'ᚺ',
-        keywords: ['disruption', 'hail', 'transformation', 'crisis'],
-        uprightMeaning: 'Hagalaz is hail — sudden, destructive, and utterly impersonal. It marks the arrival of a disruption that is outside your control: circumstances shifting forcefully, plans upended, something broken that you cannot fix by will alone. The hailstorm does not hate the crop it damages; it simply falls. What matters is what you do in the aftermath. Hagalaz carries within it the seed of transformation — the old must sometimes be shattered for the new to emerge. Do not try to stop what is already in motion. Seek shelter, wait out the storm, and begin again when the ground is clear.'
-      },
-      {
-        id: 'nauthiz', name: 'Nauthiz', unicodeSymbol: 'ᚾ',
-        keywords: ['need', 'constraint', 'patience', 'necessity'],
-        uprightMeaning: 'Nauthiz is the need-fire — the friction that produces flame. It speaks of constraint, limitation, and the very real experience of not having enough. But Nauthiz is not merely about suffering — it is about what necessity teaches. Constraint is a forge. The things you build under limitation are often stronger than the things built in abundance, because scarcity demands ingenuity and patience. If you are struggling, do not look away from the struggle. Look at what it is teaching you. The fire is inside you already.'
-      },
-      {
-        id: 'isa', name: 'Isa', unicodeSymbol: 'ᛁ',
-        keywords: ['stillness', 'pause', 'ice', 'clarity'],
-        uprightMeaning: 'Isa is ice — still, silent, and crystalline. The river has stopped flowing, and nothing is moving forward right now. This is not failure; it is winter. Isa asks you to stop pushing, stop forcing, and simply be still. There is wisdom in the pause that cannot be found in motion. The ice preserves as well as halts; what is frozen is also held. If your plans are stalled or your creative well has run dry — welcome the stillness rather than fighting it. Use this time for reflection and inner work.'
-      },
-      {
-        id: 'jera', name: 'Jera', unicodeSymbol: 'ᛃ',
-        keywords: ['harvest', 'cycle', 'patience', 'reward'],
-        uprightMeaning: 'Jera is the year — the full cycle from planting to harvest. If you have been working steadily toward something, Jera is a deeply welcome sign: the harvest is coming. The effort you have put in — the long hours, the careful tending, the patience when results were invisible — is about to bear fruit. This is not luck. It is consequence. Jera also reminds you that the cycle does not end at harvest: the field must rest, the seeds must be saved, the next planting must be planned. Celebrate what is coming, then turn your mind to what comes after.'
-      },
-      {
-        id: 'eihwaz', name: 'Eihwaz', unicodeSymbol: 'ᛇ',
-        keywords: ['endurance', 'depth', 'the axis', 'resilience'],
-        uprightMeaning: 'Eihwaz is the yew — the tree that lives for millennia, that bends without breaking, that reaches simultaneously into earth and sky. This rune speaks of endurance rooted in depth: the ability to withstand what would break lesser things, not through hardness, but through flexibility and deep rootedness. Eihwaz appears when you are being tested in ways that feel like too much — and it says: you are more resilient than you know. Something in you is changing at a fundamental level. Go deep into your roots and hold on.'
-      },
-      {
-        id: 'perthro', name: 'Perthro', unicodeSymbol: 'ᛈ',
-        keywords: ['mystery', 'chance', 'hidden knowledge', 'fate'],
-        uprightMeaning: 'Perthro is the dice cup — upturned, concealing its contents until the moment of reveal. This is the rune of mystery, of the unknown, of the things that are happening beneath the surface of visible events. Something is in play that you cannot yet see or fully understand, and Perthro counsels you to make peace with that uncertainty. There is also an invitation to explore: to go deeper into your own hidden landscape. Mystery is not the enemy of understanding — it is the doorway.'
-      },
-      {
-        id: 'algiz', name: 'Algiz', unicodeSymbol: 'ᛉ',
-        keywords: ['protection', 'sanctuary', 'guardian', 'instinct'],
-        uprightMeaning: 'Algiz is the elk-sedge — a plant with razor edges that cuts anyone who grabs it carelessly. This rune speaks of protection, both given and received. Your instincts are sharp right now; trust them. If something feels wrong, it probably is. Algiz also marks a time when guardianship and mentorship are relevant — either you are in a position to protect or guide someone else, or you need to seek out someone who can offer you shelter. There is a sanctuary available to you. You do not have to face this alone.'
-      },
-      {
-        id: 'sowilo', name: 'Sowilo', unicodeSymbol: 'ᛊ',
-        keywords: ['sun', 'success', 'vitality', 'wholeness'],
-        uprightMeaning: 'Sowilo is the sun — the force of clarity, vitality, and will that cannot be stopped. This rune is pure directional energy: pointing toward success, toward health, toward the realization of what you have been working for. When Sowilo appears, the light is on your side. A goal you have been pursuing may be closer than it appears; a health concern may be turning a corner; a sense of purpose and personal power may be returning after a period of shadow. Sowilo also marks the moment when you understand yourself more clearly. Claim your light.'
-      },
-      {
-        id: 'tiwaz', name: 'Tiwaz', unicodeSymbol: 'ᛏ',
-        keywords: ['justice', 'sacrifice', 'honor', 'victory'],
-        uprightMeaning: 'Tiwaz is Tyr\'s rune — the sky god who sacrificed his hand to bind the great wolf, for the good of all. This rune speaks of justice, of doing what is right even when the personal cost is real. There is a battle or conflict ahead, or perhaps already underway, and Tiwaz says: fight for what is true and right, not merely for what benefits you. Honor matters. Integrity matters. Tiwaz also marks the warrior spirit: courage, discipline, and the willingness to make necessary sacrifices. Victory is possible, but it must be earned rightly.'
-      },
-      {
-        id: 'berkano', name: 'Berkano', unicodeSymbol: 'ᛒ',
-        keywords: ['birth', 'nurturing', 'growth', 'new life'],
-        uprightMeaning: 'Berkano is the birch — one of the first trees to return after the long winter, full of the vitality of new growth. This rune governs birth in all its forms: the birth of a child, a project, a relationship, a creative work, a new phase of life. It is also the rune of nurturing — the patient, sustained care that turns a seed into a living thing. Something new is beginning in your life, and it needs your attention, warmth, and protection. This is not the time for grand gestures; it is the time for consistent, gentle tending.'
-      },
-      {
-        id: 'ehwaz', name: 'Ehwaz', unicodeSymbol: 'ᛖ',
-        keywords: ['partnership', 'movement', 'trust', 'cooperation'],
-        uprightMeaning: 'Ehwaz is the horse — and specifically the relationship between horse and rider, built on trust, communication, and mutual respect. Neither dominates; both must cooperate for the journey to succeed. This rune speaks of partnership in all its forms: a business collaboration, a marriage, a friendship, a working team. Ehwaz also signals movement and travel: things are progressing, shifting, and there is an energy of momentum available if you work with those around you rather than against them. Trust the partnership. The horse knows the terrain.'
-      },
-      {
-        id: 'mannaz', name: 'Mannaz', unicodeSymbol: 'ᛗ',
-        keywords: ['humanity', 'self', 'community', 'the mind'],
-        uprightMeaning: 'Mannaz is the human — both the self and the community, the individual and the collective. This rune asks you to consider yourself honestly: not with pride or shame, but with clear-eyed recognition of what you are — capable, fallible, connected, and distinct. It is also the rune of the social world: your place within your community, the roles you play, how you are perceived. At its best, Mannaz points to a moment of genuine self-knowledge and social harmony. You understand yourself a little better than you did before. This understanding is the foundation for right action.'
-      },
-      {
-        id: 'laguz', name: 'Laguz', unicodeSymbol: 'ᛚ',
-        keywords: ['water', 'intuition', 'flow', 'the unconscious'],
-        uprightMeaning: 'Laguz is water — the lake, the river, the deep well. It speaks of intuition, of the emotional body, of everything that moves beneath the rational surface. If you have been relying too heavily on logic and planning, Laguz invites you to feel your way forward. Your gut knows things your mind has not yet articulated. Dreams may be particularly informative right now. There is also an element of flow: stop fighting the current and let the water carry you. The path of least resistance is not always the path of laziness — sometimes it is the path of wisdom.'
-      },
-      {
-        id: 'ingwaz', name: 'Ingwaz', unicodeSymbol: 'ᛜ',
-        keywords: ['completion', 'gestation', 'inner work', 'readiness'],
-        uprightMeaning: 'Ingwaz is the seed in the ground — full of potential, complete in itself, waiting for the right moment to emerge. This rune speaks of an inner completion: something within you has reached a point of readiness, of wholeness that does not yet need to be shown to the world. You may be in a period of deep inner work, of gestation, of gathering your forces before a significant emergence. This is not inaction — it is preparation. The seed does not need to explain itself while it is germinating. The breakthrough, when it comes, will simply be visible.'
-      },
-      {
-        id: 'dagaz', name: 'Dagaz', unicodeSymbol: 'ᛞ',
-        keywords: ['dawn', 'breakthrough', 'transformation', 'clarity'],
-        uprightMeaning: 'Dagaz is the dawn — the moment when darkness gives way to light, when what was hidden becomes suddenly, irreversibly visible. This rune marks a breakthrough: a shift so significant that things cannot go back to the way they were. It may be an insight that changes how you see everything, a moment of genuine transformation, a door opening onto a fundamentally different chapter of life. Dagaz is not subtle. When this rune appears, something is changing at the root. Welcome it. The dawn does not care whether you are ready — it comes regardless.'
-      },
-      {
-        id: 'othala', name: 'Othala', unicodeSymbol: 'ᛟ',
-        keywords: ['heritage', 'home', 'inheritance', 'belonging'],
-        uprightMeaning: 'Othala is the ancestral enclosure — the home place, the inherited land, the legacy that comes before and after you. This rune speaks of what you carry from your lineage: the gifts, the patterns, the wounds, the wisdom. It also speaks of home in the fullest sense — not just a building, but a sense of belonging and rootedness that makes you who you are. There may be gifts of tradition — skills, knowledge, or perspectives passed down — that are available to you right now if you claim them. What do you carry that is truly yours?'
-      },
-      {
-        id: 'blank', name: 'Odin', unicodeSymbol: '◻',
-        keywords: ['the unknown', 'fate', 'surrender', 'the void'],
-        uprightMeaning: 'The Blank Rune is Odin\'s rune — the rune of the unknowable, of the moment before form, of the question that has no answer yet. When you draw the Blank Rune, you are invited to sit with uncertainty. The universe is not withholding information from you to be cruel — it is asking you to trust the unfolding without needing to know how it ends. There is a great freedom in accepting that you do not know. Release the need to control the outcome. Be present. The answer will come, in its own form, in its own time.'
-      }
-    ];
-
-    // Deterministic daily pick: same rune for everyone on the same calendar day
-    function getDailyRune() {
-      const now = new Date();
-      const start = new Date(now.getFullYear(), 0, 0);
-      const dayOfYear = Math.floor((now - start) / 86400000);
-      return RUNES[dayOfYear % RUNES.length];
-    }
-
-    function formatDate() {
-      return new Date().toLocaleDateString('en-US', {
-        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
-      });
-    }
-
-    let revealed = false;
-
-    function revealRune() {
-      if (revealed) return;
-      revealed = true;
-
-      const rune = getDailyRune();
-
-      document.getElementById('runeGlyph').textContent = rune.unicodeSymbol;
-      document.getElementById('runeNameCard').textContent = rune.name.toUpperCase();
-      document.getElementById('meaningText').textContent = rune.uprightMeaning;
-
-      const kwEl = document.getElementById('keywords');
-      rune.keywords.forEach(kw => {
-        const span = document.createElement('span');
-        span.className = 'keyword';
-        span.textContent = kw;
-        kwEl.appendChild(span);
-      });
-
-      document.getElementById('card').classList.add('flipped');
-      document.getElementById('revealBtn').disabled = true;
-      document.getElementById('revealBtn').textContent = rune.name;
-
-      setTimeout(() => {
-        document.getElementById('meaningCard').classList.add('visible');
-      }, 500);
-    }
-
-    document.getElementById('dateLabel').textContent = formatDate();
-  </script>
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>
