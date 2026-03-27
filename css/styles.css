@@ -1,0 +1,312 @@
+:root {
+  --bg:     #1a1410;
+  --stone:  #2d2820;
+  --glyph:  #e8dcc8;
+  --accent: #c8873a;
+  --text:   #f0e8d8;
+  --muted:  #a09080;
+  --border: #3d3830;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* faint runic wallpaper */
+body::before {
+  content: 'ᚠ ᚢ ᚦ ᚨ ᚱ ᚲ ᚷ ᚹ ᚺ ᚾ ᛁ ᛃ ᛇ ᛈ ᛉ ᛊ ᛏ ᛒ ᛖ ᛗ ᛚ ᛜ ᛞ ᛟ ᚠ ᚢ ᚦ ᚨ ᚱ ᚲ ᚷ ᚹ ᚺ ᚾ ᛁ ᛃ ᛇ ᛈ ᛉ ᛊ ᛏ ᛒ ᛖ ᛗ ᛚ ᛜ ᛞ ᛟ';
+  position: fixed;
+  inset: 0;
+  font-size: 20px;
+  letter-spacing: 10px;
+  line-height: 3;
+  color: rgba(200,135,58,0.035);
+  pointer-events: none;
+  z-index: 0;
+  padding: 24px;
+  word-break: break-all;
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 480px;
+  padding: 40px 24px 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: opacity 0.2s;
+}
+
+/* ── Site Header ── */
+.site-header {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+/* ── Locale toggle ── */
+.locale-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.locale-btn {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-family: Georgia, serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 4px 2px;
+  transition: color 0.2s;
+}
+.locale-btn.active { color: var(--accent); }
+.locale-btn:hover:not(.active) { color: var(--text); }
+.locale-sep {
+  color: var(--border);
+  font-size: 11px;
+  user-select: none;
+}
+
+/* ── Header text ── */
+.app-title {
+  font-size: 40px;
+  font-weight: normal;
+  color: var(--text);
+  letter-spacing: 1px;
+  text-align: center;
+  margin-top: 16px;
+}
+.app-subtitle {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 40px;
+}
+.date-label {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+/* ── Flip card ── */
+.card-container {
+  perspective: 1000px;
+  width: 190px;
+  height: 230px;
+  cursor: pointer;
+  margin-bottom: 28px;
+  flex-shrink: 0;
+}
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card.flipped { transform: rotateY(180deg); }
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 8px;
+  background: var(--stone);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.card-front { transform: rotateY(180deg); }
+
+.card-back-glyph {
+  font-size: 72px;
+  color: var(--border);
+  user-select: none;
+  line-height: 1;
+}
+.card-back-label {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+
+.rune-glyph {
+  font-size: 96px;
+  color: var(--glyph);
+  line-height: 1;
+  user-select: none;
+}
+.rune-name-card {
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+
+/* ── Reveal button ── */
+.reveal-btn {
+  background: var(--stone);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+  font-family: Georgia, serif;
+  font-size: 17px;
+  letter-spacing: 1px;
+  padding: 17px 0;
+  cursor: pointer;
+  width: 100%;
+  max-width: 320px;
+  margin-bottom: 36px;
+  transition: border-color 0.2s, background 0.2s, opacity 0.2s;
+}
+.reveal-btn:hover:not(:disabled) {
+  background: #332d26;
+  border-color: var(--accent);
+}
+.reveal-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+/* ── Meaning card ── */
+.meaning-card {
+  background: var(--stone);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 28px 24px;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.55s ease 0.35s, transform 0.55s ease 0.35s;
+  pointer-events: none;
+}
+.meaning-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+.keyword {
+  font-size: 10px;
+  color: var(--accent);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: rgba(200,135,58,0.09);
+  border: 1px solid rgba(200,135,58,0.22);
+  border-radius: 3px;
+  padding: 3px 8px;
+}
+.meaning-text {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text);
+  white-space: pre-wrap;
+}
+
+/* ── Divider ── */
+.divider {
+  width: 48px;
+  height: 1px;
+  background: var(--border);
+  margin: 44px 0;
+}
+
+/* ── Download section ── */
+.download-section {
+  text-align: center;
+  width: 100%;
+}
+.download-label {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.download-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.download-buttons a {
+  display: inline-block;
+  transition: opacity 0.2s;
+}
+.download-buttons a:hover { opacity: 0.85; }
+.download-buttons img { display: block; }
+
+/* ── Footer ── */
+.footer-nav {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.footer-nav a {
+  font-size: 11px;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.footer-nav a:hover { color: var(--accent); }
+
+/* ── Scroll reveals ── */
+.reveal-section {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-section,
+  .reveal-section.visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .card { transition: none; }
+  .meaning-card { transition: none; }
+  .page { transition: none; }
+  .reveal-btn { transition: none; }
+}
