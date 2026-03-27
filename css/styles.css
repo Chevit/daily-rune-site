@@ -314,6 +314,10 @@ body::before {
 }
 
 /* ── Subpage layout ── */
+.page.page--wide {
+  max-width: 80vw;
+}
+
 .subpage-title {
   font-size: 28px;
   margin-top: 24px;
