@@ -22,14 +22,12 @@ export class UI {
       LOCALES[locale].runes[runeId].name.toUpperCase();
   }
 
-  // Flips card, disables button, shows rune name on button. No-op if already revealed.
+  // Flips card, collapses button. No-op if already revealed.
   flip() {
     if (this._revealed) return;
     this._revealed = true;
     document.getElementById('card').classList.add('flipped');
-    const btn = document.getElementById('revealBtn');
-    btn.disabled = true;
-    btn.textContent = LOCALES[this._locale].runes[this._runeId].name;
+    document.getElementById('revealBtn').classList.add('revealed');
   }
 
   // Populates keywords + meaning text, then fades in the meaning card after 500ms.
@@ -55,9 +53,7 @@ export class UI {
 
       if (this._revealed) {
         this._renderMeaning();
-        const btn = document.getElementById('revealBtn');
-        btn.disabled = true;
-        btn.textContent = LOCALES[locale].runes[this._runeId].name;
+        document.getElementById('revealBtn').classList.add('revealed');
       }
 
       page.style.opacity = '1';

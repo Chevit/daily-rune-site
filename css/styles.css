@@ -268,7 +268,20 @@ body::before {
   max-width: 320px;
   margin-bottom: 40px;
   overflow: hidden;
-  transition: border-color 0.3s, background 0.3s, opacity 0.2s, box-shadow 0.3s;
+  max-height: 80px;
+  transition: border-color 0.3s, background 0.3s, box-shadow 0.3s,
+              opacity 0.35s ease,
+              max-height 0.45s ease 0.2s,
+              margin-bottom 0.45s ease 0.2s,
+              padding 0.45s ease 0.2s;
+}
+.reveal-btn.revealed {
+  opacity: 0;
+  pointer-events: none;
+  max-height: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 .reveal-btn::before {
   content: '';
