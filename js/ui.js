@@ -22,11 +22,12 @@ export class UI {
       LOCALES[locale].runes[runeId].name.toUpperCase();
   }
 
-  // Flips card. No-op if already revealed.
+  // Flips card, collapses button. No-op if already revealed.
   flip() {
     if (this._revealed) return;
     this._revealed = true;
     document.getElementById('card').classList.add('flipped');
+    document.getElementById('revealBtn').classList.add('revealed');
   }
 
   // Populates keywords + meaning text, then fades in the meaning card after 500ms.
@@ -52,6 +53,7 @@ export class UI {
 
       if (this._revealed) {
         this._renderMeaning();
+        document.getElementById('revealBtn').classList.add('revealed');
       }
 
       page.style.opacity = '1';
@@ -85,6 +87,7 @@ export class UI {
     document.getElementById('appTitle').textContent = L.appTitle;
     document.getElementById('appSubtitle').textContent = L.subtitle;
     document.getElementById('cardBackLabel').textContent = L.tapToReveal;
+    document.getElementById('revealBtn').textContent = L.revealBtn;
     document.getElementById('downloadLabel').textContent = L.downloadLabel;
     document.getElementById('privacyLink').textContent = L.privacyPolicy;
     document.getElementById('supportLink').textContent = L.support;

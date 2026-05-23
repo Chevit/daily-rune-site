@@ -21,6 +21,7 @@ function reveal() {
   ui.revealMeaning();
 }
 
+document.getElementById('revealBtn').addEventListener('click', reveal);
 document.getElementById('cardContainer').addEventListener('click', reveal);
 
 document.querySelectorAll('.locale-btn').forEach(btn => {
