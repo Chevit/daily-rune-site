@@ -6,7 +6,6 @@ let currentLocale = localStorage.getItem('locale') || 'en';
 
 const ui = new UI();
 ui.render(runeId, currentLocale);
-ui.initScrollReveals();
 updateFooterLinks(currentLocale);
 
 function updateFooterLinks(locale) {
@@ -21,7 +20,6 @@ function reveal() {
   ui.revealMeaning();
 }
 
-document.getElementById('revealBtn').addEventListener('click', reveal);
 document.getElementById('cardContainer').addEventListener('click', reveal);
 
 document.querySelectorAll('.locale-btn').forEach(btn => {

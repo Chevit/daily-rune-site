@@ -251,55 +251,6 @@ body::before {
   text-transform: uppercase;
 }
 
-/* ── Reveal button ── */
-.reveal-btn {
-  position: relative;
-  background: var(--stone);
-  border: 1px solid rgba(200,135,58,0.22);
-  border-radius: 3px;
-  color: var(--gold);
-  font-family: 'Philosopher', Georgia, serif;
-  font-size: 12px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  padding: 20px 0;
-  cursor: pointer;
-  width: 100%;
-  max-width: 320px;
-  margin-bottom: 40px;
-  overflow: hidden;
-  max-height: 80px;
-  transition: border-color 0.3s, background 0.3s, box-shadow 0.3s,
-              opacity 0.35s ease,
-              max-height 0.45s ease 0.2s,
-              margin-bottom 0.45s ease 0.2s,
-              padding 0.45s ease 0.2s;
-}
-.reveal-btn.revealed {
-  opacity: 0;
-  pointer-events: none;
-  max-height: 0;
-  margin-bottom: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-.reveal-btn::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(200,135,58,0.05) 0%, transparent 100%);
-  pointer-events: none;
-}
-.reveal-btn:hover:not(:disabled) {
-  background: var(--stone2);
-  border-color: rgba(200,135,58,0.45);
-  box-shadow: 0 0 28px rgba(200,135,58,0.07), inset 0 0 16px rgba(200,135,58,0.04);
-}
-.reveal-btn:disabled {
-  opacity: 0.4;
-  cursor: default;
-}
-
 /* ── Meaning card ── */
 .meaning-card {
   background: var(--stone);
@@ -401,29 +352,15 @@ body::before {
 }
 .footer-nav a:hover { color: var(--accent); }
 
-/* ── Scroll reveals ── */
-.reveal-section {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
-}
-.reveal-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 /* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
-  .reveal-section,
-  .reveal-section.visible {
+  .meaning-card {
     opacity: 1;
     transform: none;
     transition: none;
   }
   .card { transition: none; }
-  .meaning-card { transition: none; }
   .page { transition: none; }
-  .reveal-btn { transition: none; }
   .download-buttons a { transition: none; }
   .card-back::before,
   .card-back::after { transition: none; }
