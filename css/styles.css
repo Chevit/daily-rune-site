@@ -1,17 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@font-face {
+  font-family: 'ElderFuthark';
+  src: url('../assets/fonts/BabelStoneRunicElderFuthark.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --bg:     #1a1410;
-  --stone:  #2d2820;
-  --glyph:  #e8dcc8;
-  --accent: #c8873a;
-  --text:   #f0e8d8;
-  --muted:  #a09080;
-  --border: #3d3830;
+  --bg:      #0d0a07;
+  --stone:   #1a1610;
+  --stone2:  #211d14;
+  --glyph:   #f0e8d0;
+  --accent:  #c8873a;
+  --gold:    #d9a84e;
+  --text:    #e8dcc8;
+  --muted:   #7a6a58;
+  --border:  #2c2518;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: 'Philosopher', Georgia, serif;
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
@@ -20,19 +32,33 @@ body {
   align-items: center;
 }
 
-/* faint runic wallpaper */
+/* warm atmospheric center glow */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 55% at 50% 22%, rgba(200,135,58,0.055) 0%, transparent 65%),
+    radial-gradient(ellipse 120% 55% at 50% 110%, rgba(8,5,2,0.65) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* runic wallpaper */
 body::before {
   content: 'ᚠ ᚢ ᚦ ᚨ ᚱ ᚲ ᚷ ᚹ ᚺ ᚾ ᛁ ᛃ ᛇ ᛈ ᛉ ᛊ ᛏ ᛒ ᛖ ᛗ ᛚ ᛜ ᛞ ᛟ ᚠ ᚢ ᚦ ᚨ ᚱ ᚲ ᚷ ᚹ ᚺ ᚾ ᛁ ᛃ ᛇ ᛈ ᛉ ᛊ ᛏ ᛒ ᛖ ᛗ ᛚ ᛜ ᛞ ᛟ';
   position: fixed;
   inset: 0;
-  font-size: 20px;
-  letter-spacing: 10px;
-  line-height: 3;
-  color: rgba(200,135,58,0.035);
+  font-family: 'ElderFuthark', serif;
+  font-size: 18px;
+  letter-spacing: 14px;
+  line-height: 3.5;
+  color: rgba(200,135,58,0.025);
   pointer-events: none;
   z-index: 0;
-  padding: 24px;
+  padding: 32px;
   word-break: break-all;
+  overflow: hidden;
 }
 
 .page {
@@ -40,7 +66,7 @@ body::before {
   z-index: 1;
   width: 100%;
   max-width: 480px;
-  padding: 40px 24px 64px;
+  padding: 48px 28px 72px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -68,13 +94,13 @@ body::before {
   background: none;
   border: none;
   color: var(--muted);
-  font-family: Georgia, serif;
+  font-family: 'Philosopher', Georgia, serif;
   font-size: 11px;
-  letter-spacing: 2px;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
   cursor: pointer;
   padding: 4px 2px;
-  transition: color 0.2s;
+  transition: color 0.25s;
 }
 .locale-btn.active { color: var(--accent); }
 .locale-btn:hover:not(.active) { color: var(--text); }
@@ -86,37 +112,41 @@ body::before {
 
 /* ── Header text ── */
 .app-title {
-  font-size: 40px;
-  font-weight: normal;
+  font-family: 'Philosopher', Georgia, serif;
+  font-size: 46px;
+  font-weight: 700;
   color: var(--text);
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   text-align: center;
-  margin-top: 16px;
+  margin-top: 20px;
+  text-shadow: 0 0 80px rgba(200,135,58,0.18);
 }
 .app-subtitle {
-  font-size: 11px;
+  font-size: 10px;
+  font-style: normal;
   color: var(--muted);
-  letter-spacing: 3.5px;
+  letter-spacing: 4.5px;
   text-transform: uppercase;
   text-align: center;
-  margin-top: 8px;
-  margin-bottom: 40px;
+  margin-top: 12px;
+  margin-bottom: 48px;
 }
 .date-label {
-  font-size: 11px;
+  font-size: 10px;
+  font-style: italic;
   color: var(--muted);
-  letter-spacing: 2px;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
 /* ── Flip card ── */
 .card-container {
-  perspective: 1000px;
-  width: 190px;
-  height: 230px;
+  perspective: 1200px;
+  width: 200px;
+  height: 260px;
   cursor: pointer;
-  margin-bottom: 28px;
+  margin-bottom: 32px;
   flex-shrink: 0;
 }
 .card {
@@ -124,7 +154,7 @@ body::before {
   height: 100%;
   position: relative;
   transform-style: preserve-3d;
-  transition: transform 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .card.flipped { transform: rotateY(180deg); }
 
@@ -133,67 +163,127 @@ body::before {
   inset: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  border-radius: 8px;
+  border-radius: 10px;
   background: var(--stone);
   border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
+  box-shadow:
+    0 8px 40px rgba(0,0,0,0.6),
+    0 2px 8px rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.025);
 }
 .card-front { transform: rotateY(180deg); }
 
+/* decorative corner accents on card back */
+.card-back::before,
+.card-back::after {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-color: var(--accent);
+  border-style: solid;
+  opacity: 0.28;
+  transition: opacity 0.35s;
+}
+.card-back::before {
+  top: 12px;
+  left: 12px;
+  border-width: 1px 0 0 1px;
+}
+.card-back::after {
+  bottom: 12px;
+  right: 12px;
+  border-width: 0 1px 1px 0;
+}
+
+.card-container:hover .card:not(.flipped) .card-back::before,
+.card-container:hover .card:not(.flipped) .card-back::after {
+  opacity: 0.55;
+}
+
+.card-container:hover .card:not(.flipped) .card-back {
+  background: linear-gradient(160deg, #201c13, #161210);
+}
+
 .card-back-glyph {
-  font-size: 72px;
-  color: var(--border);
+  font-family: 'ElderFuthark', serif;
+  font-size: 84px;
+  color: rgba(200,135,58,0.18);
   user-select: none;
   line-height: 1;
+  transition: color 0.4s, filter 0.4s;
 }
+.card-container:hover .card:not(.flipped) .card-back-glyph {
+  color: rgba(200,135,58,0.3);
+  filter: drop-shadow(0 0 14px rgba(200,135,58,0.14));
+}
+
 .card-back-label {
-  font-size: 10px;
+  font-family: 'Philosopher', serif;
+  font-style: italic;
+  font-size: 9px;
   color: var(--muted);
   letter-spacing: 2.5px;
   text-transform: uppercase;
   text-align: center;
-  padding: 0 12px;
+  padding: 0 16px;
 }
 
 .rune-glyph {
-  font-size: 96px;
+  font-family: 'ElderFuthark', serif;
+  font-size: 110px;
   color: var(--glyph);
   line-height: 1;
   user-select: none;
+  filter: drop-shadow(0 0 20px rgba(240,232,208,0.12));
 }
 .rune-name-card {
-  font-size: 14px;
+  font-family: 'Philosopher', serif;
+  font-style: italic;
+  font-size: 11px;
   color: var(--accent);
-  letter-spacing: 2.5px;
+  letter-spacing: 3.5px;
   text-transform: uppercase;
 }
 
 /* ── Reveal button ── */
 .reveal-btn {
+  position: relative;
   background: var(--stone);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  color: var(--text);
-  font-family: Georgia, serif;
-  font-size: 17px;
-  letter-spacing: 1px;
-  padding: 17px 0;
+  border: 1px solid rgba(200,135,58,0.22);
+  border-radius: 3px;
+  color: var(--gold);
+  font-family: 'Philosopher', Georgia, serif;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 20px 0;
   cursor: pointer;
   width: 100%;
   max-width: 320px;
-  margin-bottom: 36px;
-  transition: border-color 0.2s, background 0.2s, opacity 0.2s;
+  margin-bottom: 40px;
+  overflow: hidden;
+  transition: border-color 0.3s, background 0.3s, opacity 0.2s, box-shadow 0.3s;
+}
+.reveal-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(200,135,58,0.05) 0%, transparent 100%);
+  pointer-events: none;
 }
 .reveal-btn:hover:not(:disabled) {
-  background: #332d26;
-  border-color: var(--accent);
+  background: var(--stone2);
+  border-color: rgba(200,135,58,0.45);
+  box-shadow: 0 0 28px rgba(200,135,58,0.07), inset 0 0 16px rgba(200,135,58,0.04);
 }
 .reveal-btn:disabled {
-  opacity: 0.45;
+  opacity: 0.4;
   cursor: default;
 }
 
@@ -201,13 +291,15 @@ body::before {
 .meaning-card {
   background: var(--stone);
   border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 28px 24px;
+  border-left: 2px solid rgba(200,135,58,0.38);
+  border-radius: 10px;
+  padding: 32px 28px;
   width: 100%;
   opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.55s ease 0.35s, transform 0.55s ease 0.35s;
+  transform: translateY(16px);
+  transition: opacity 0.65s ease 0.3s, transform 0.65s ease 0.3s;
   pointer-events: none;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.3);
 }
 .meaning-card.visible {
   opacity: 1;
@@ -219,30 +311,32 @@ body::before {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-bottom: 18px;
+  margin-bottom: 22px;
 }
 .keyword {
-  font-size: 10px;
+  font-family: 'Philosopher', serif;
+  font-size: 9px;
   color: var(--accent);
-  letter-spacing: 2px;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
-  background: rgba(200,135,58,0.09);
-  border: 1px solid rgba(200,135,58,0.22);
-  border-radius: 3px;
-  padding: 3px 8px;
+  background: rgba(200,135,58,0.07);
+  border: 1px solid rgba(200,135,58,0.16);
+  border-radius: 2px;
+  padding: 4px 10px;
 }
 .meaning-text {
+  font-family: 'Philosopher', serif;
   font-size: 15px;
-  line-height: 1.8;
+  line-height: 1.95;
   color: var(--text);
   white-space: pre-wrap;
 }
 
 /* ── Divider ── */
 .divider {
-  width: 48px;
-  height: 1px;
-  background: var(--border);
+  width: 1px;
+  height: 52px;
+  background: linear-gradient(to bottom, transparent, var(--border), transparent);
   margin: 44px 0;
 }
 
@@ -252,11 +346,13 @@ body::before {
   width: 100%;
 }
 .download-label {
-  font-size: 11px;
+  font-family: 'Philosopher', serif;
+  font-style: italic;
+  font-size: 10px;
   color: var(--muted);
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 .download-buttons {
   display: flex;
@@ -266,25 +362,29 @@ body::before {
 }
 .download-buttons a {
   display: inline-block;
-  transition: opacity 0.2s;
+  transition: opacity 0.25s, transform 0.25s;
 }
-.download-buttons a:hover { opacity: 0.85; }
+.download-buttons a:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
 .download-buttons img { display: block; }
 
 /* ── Footer ── */
 .footer-nav {
   display: flex;
-  gap: 24px;
+  gap: 28px;
   flex-wrap: wrap;
   justify-content: center;
 }
 .footer-nav a {
-  font-size: 11px;
+  font-family: 'Philosopher', serif;
+  font-size: 10px;
   color: var(--muted);
   text-decoration: none;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  transition: color 0.2s;
+  transition: color 0.25s;
 }
 .footer-nav a:hover { color: var(--accent); }
 
@@ -292,7 +392,7 @@ body::before {
 .reveal-section {
   opacity: 0;
   transform: translateY(16px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: opacity 0.55s ease, transform 0.55s ease;
 }
 .reveal-section.visible {
   opacity: 1;
@@ -311,6 +411,10 @@ body::before {
   .meaning-card { transition: none; }
   .page { transition: none; }
   .reveal-btn { transition: none; }
+  .download-buttons a { transition: none; }
+  .card-back::before,
+  .card-back::after { transition: none; }
+  .card-back-glyph { transition: none; }
 }
 
 /* ── Subpage layout ── */
@@ -319,20 +423,24 @@ body::before {
 }
 
 .subpage-title {
-  font-size: 28px;
+  font-family: 'Philosopher', serif;
+  font-size: 30px;
+  font-weight: 700;
   margin-top: 24px;
 }
 .back-link {
   display: block;
   text-align: center;
-  font-size: 11px;
+  font-family: 'Philosopher', serif;
+  font-style: italic;
+  font-size: 10px;
   color: var(--muted);
   text-decoration: none;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  transition: color 0.2s;
-  margin-top: 8px;
-  margin-bottom: 40px;
+  transition: color 0.25s;
+  margin-top: 10px;
+  margin-bottom: 44px;
 }
 .back-link:hover { color: var(--accent); }
 
@@ -340,57 +448,62 @@ body::before {
 .content-card {
   background: var(--stone);
   border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 28px 24px;
+  border-radius: 10px;
+  padding: 32px 28px;
   width: 100%;
 }
 
 /* ── Subpage typography ── */
 .subpage-content h2 {
-  font-size: 12px;
+  font-family: 'Philosopher', serif;
+  font-size: 10px;
   color: var(--accent);
-  letter-spacing: 2px;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
-  font-weight: normal;
-  margin-top: 32px;
-  margin-bottom: 10px;
-  padding-bottom: 6px;
+  font-weight: 700;
+  margin-top: 36px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
   border-bottom: 1px solid var(--border);
 }
 .subpage-content h3 {
-  font-size: 13px;
+  font-family: 'Philosopher', serif;
+  font-size: 14px;
   color: var(--text);
-  font-weight: bold;
-  margin-top: 20px;
-  margin-bottom: 6px;
+  font-weight: 700;
+  margin-top: 22px;
+  margin-bottom: 8px;
 }
 .subpage-content p,
 .subpage-content li {
-  font-size: 14px;
-  line-height: 1.8;
+  font-family: 'Philosopher', serif;
+  font-size: 15px;
+  line-height: 1.9;
   color: var(--text);
 }
 .subpage-content ul {
   padding-left: 20px;
-  margin: 8px 0;
+  margin: 10px 0;
 }
 .subpage-content a {
   color: var(--accent);
 }
 .subpage-content .last-updated,
 .subpage-content .subtitle {
-  font-size: 12px;
+  font-family: 'Philosopher', serif;
+  font-style: italic;
+  font-size: 11px;
   color: var(--muted);
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   display: block;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 .subpage-contact-box {
-  background: rgba(200,135,58,0.06);
-  border: 1px solid rgba(200,135,58,0.18);
+  background: rgba(200,135,58,0.05);
+  border: 1px solid rgba(200,135,58,0.15);
   border-radius: 6px;
-  padding: 20px 24px;
-  margin-top: 24px;
+  padding: 22px 26px;
+  margin-top: 28px;
 }
 .subpage-contact-box p {
   margin: 0 0 8px;
@@ -403,18 +516,20 @@ body::before {
   letter-spacing: 0.5px;
 }
 .subpage-footer {
-  margin-top: 36px;
-  font-size: 11px;
+  margin-top: 40px;
+  font-family: 'Philosopher', serif;
+  font-style: italic;
+  font-size: 10px;
   color: var(--muted);
   text-align: center;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
 }
 .subpage-footer a {
   color: var(--muted);
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  transition: color 0.2s;
+  transition: color 0.25s;
 }
 .subpage-footer a:hover { color: var(--accent); }
 
