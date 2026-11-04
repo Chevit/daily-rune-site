@@ -7,6 +7,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { LOCALES } from '../js/locales.js';
 import { RUNES } from '../js/runes.js';
+import { UK_SEARCH_NAMES } from './gen-seo-pages.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://dailyrune.app';
@@ -39,8 +40,10 @@ function checkHead(html, file, { lang, url, enUrl, ukUrl }) {
     check(html.includes(`<meta property="${p}" content="`), `${file}: missing ${p}`);
   }
   check(html.includes(`<meta property="og:url" content="${url}">`), `${file}: og:url should be ${url}`);
-  check(html.includes('<meta name="twitter:card" content="summary">'), `${file}: missing twitter:card`);
+  check(html.includes('<meta name="twitter:card" content="summary_large_image">'), `${file}: twitter:card should be summary_large_image`);
   check(html.includes('<meta property="og:image" content="https://dailyrune.app/assets/og-image.png">'), `${file}: missing og:image`);
+  const alt = lang === 'uk' ? 'Сяюча руна Альгіз — Щоденна Руна' : 'Glowing Algiz rune — Daily Rune';
+  check(html.includes(`<meta property="og:image:alt" content="${alt}">`), `${file}: og:image:alt should be "${alt}"`);
   const ld = attr(html, /<script type="application\/ld\+json">([\s\S]*?)<\/script>/, 'JSON-LD', file);
   return { title, desc, ld: JSON.parse(ld) };
 }
@@ -59,7 +62,7 @@ for (const rune of RUNES) {
     const file = `${l === 'ua' ? 'uk/' : ''}runes/${rune.id}/index.html`;
     const html = read(file);
     const R = LOCALES[l].runes[rune.id];
-    const { title, ld } = checkHead(html, file, {
+    const { title, desc, ld } = checkHead(html, file, {
       lang: LOC[l].lang,
       url: urlFor(l, `/runes/${rune.id}/`),
       enUrl: urlFor('en', `/runes/${rune.id}/`),
@@ -69,6 +72,13 @@ for (const rune of RUNES) {
     const h = h1s(html);
     check(h.length === 1, `${file}: expected exactly one <h1>, got ${h.length}`);
     check(h[0].includes(esc(R.name)), `${file}: <h1> should contain "${R.name}"`);
+
+    check(desc.length >= 90 && desc.length <= 160, `${file}: rune description length ${desc.length} not in 90–160`);
+    const names = l === 'ua' && UK_SEARCH_NAMES[rune.id] ? [UK_SEARCH_NAMES[rune.id], R.name] : [R.name];
+    for (const n of names) {
+      check(h[0].includes(esc(n)), `${file}: <h1> should contain "${n}"`);
+      if (!(rune.id === 'blank' && l === 'en')) check(title.includes(esc(n)), `${file}: title should contain "${n}"`);
+    }
 
     check(title.length >= 29 && title.length <= 65, `${file}: title length ${title.length} not in 29–65`);
     const titleName = rune.id === 'blank' && l === 'en' ? 'Blank Rune (Odin)' : R.name;
@@ -129,6 +139,7 @@ const expected = ['/', '/uk/', '/runes/', '/uk/runes/', '/support.html', '/priva
   ...RUNES.flatMap(r => [`/runes/${r.id}/`, `/uk/runes/${r.id}/`])];
 for (const p of expected) check(sitemap.includes(`<loc>${SITE}${p}</loc>`), `sitemap.xml: missing ${p}`);
 check((sitemap.match(/<url>/g) || []).length === expected.length, 'sitemap.xml: unexpected extra URLs');
+check(!sitemap.includes('<lastmod>'), 'sitemap.xml: <lastmod> should be removed');
 check(read('robots.txt').includes(`Sitemap: ${SITE}/sitemap.xml`), 'robots.txt: missing Sitemap line');
 console.log('✓ sitemap.xml + robots.txt');
 
