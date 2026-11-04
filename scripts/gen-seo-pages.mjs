@@ -21,7 +21,7 @@ const T = {
     lang: 'en', prefix: '', ogLocale: 'en_US', ogAlt: 'uk_UA', site: 'Daily Rune',
     upright: 'Upright meaning', reversed: 'Reversed meaning',
     h1: n => `${n} — Rune Meaning`,
-    title: (n, rev) => rev ? `${n} Rune Meaning — Upright & Reversed` : `${n} Rune Meaning — Elder Futhark`,
+    title: (n, rev) => rev ? `${n} Rune Meaning — Upright & Reversed` : `${n} Rune Meaning`,
     hubH1: 'Elder Futhark Rune Meanings',
     hubTitle: 'Elder Futhark Rune Meanings — All 25 Runes | Daily Rune',
     hubDesc: 'Meanings of all 24 Elder Futhark runes and the blank rune, upright and reversed. Free guide from Daily Rune.',
@@ -31,7 +31,7 @@ const T = {
     lang: 'uk', prefix: '/uk', ogLocale: 'uk_UA', ogAlt: 'en_US', site: 'Щоденна Руна',
     upright: 'Пряме положення', reversed: 'Перевернуте положення',
     h1: n => `${n} — значення руни`,
-    title: (n, rev) => rev ? `Руна ${n}: значення, пряме й перевернуте` : `Руна ${n}: значення — Старший Футарк`,
+    title: (n, rev) => rev ? `Руна ${n}: значення, пряме й перевернуте` : `Руна ${n}: значення`,
     hubH1: 'Значення рун Старшого Футарку',
     hubTitle: 'Значення рун Старшого Футарку — усі 25 рун | Щоденна Руна',
     hubDesc: 'Значення всіх 24 рун Старшого Футарку та порожньої руни — пряме й перевернуте положення. Безкоштовний довідник від Щоденної Руни.',
@@ -48,7 +48,6 @@ const BLANK = {
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const paras = text => text.split('\n\n').map(p => `      <p>${esc(p)}</p>`).join('\n');
 const jsonLd = obj => JSON.stringify(obj, null, 2).replace(/</g, '\\u003c');
-const other = l => (l === 'en' ? 'ua' : 'en');
 const url = (l, path) => `${SITE}${T[l].prefix}${path}`;
 
 function withSuffix(l, title) {
@@ -93,7 +92,7 @@ ${BANNER}
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Glowing Algiz rune — Daily Rune">
-  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:card" content="summary">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="manifest" href="/manifest.webmanifest">
   <link rel="stylesheet" href="/css/styles.css">

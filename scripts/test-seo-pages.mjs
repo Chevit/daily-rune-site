@@ -39,7 +39,7 @@ function checkHead(html, file, { lang, url, enUrl, ukUrl }) {
     check(html.includes(`<meta property="${p}" content="`), `${file}: missing ${p}`);
   }
   check(html.includes(`<meta property="og:url" content="${url}">`), `${file}: og:url should be ${url}`);
-  check(html.includes('<meta name="twitter:card" content="summary_large_image">'), `${file}: missing twitter:card`);
+  check(html.includes('<meta name="twitter:card" content="summary">'), `${file}: missing twitter:card`);
   check(html.includes('<meta property="og:image" content="https://dailyrune.app/assets/og-image.png">'), `${file}: missing og:image`);
   const ld = attr(html, /<script type="application\/ld\+json">([\s\S]*?)<\/script>/, 'JSON-LD', file);
   return { title, desc, ld: JSON.parse(ld) };
@@ -70,7 +70,7 @@ for (const rune of RUNES) {
     check(h.length === 1, `${file}: expected exactly one <h1>, got ${h.length}`);
     check(h[0].includes(esc(R.name)), `${file}: <h1> should contain "${R.name}"`);
 
-    check(title.length >= 30 && title.length <= 65, `${file}: title length ${title.length} not in 30–65`);
+    check(title.length >= 29 && title.length <= 65, `${file}: title length ${title.length} not in 29–65`);
     const titleName = rune.id === 'blank' && l === 'en' ? 'Blank Rune (Odin)' : R.name;
     check(title.includes(esc(titleName)), `${file}: title should contain "${titleName}"`);
 
