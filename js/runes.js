@@ -22,6 +22,6 @@ export const RUNES = [
   { id: 'laguz',    unicodeSymbol: 'ᛚ', isReversible: true  },
   { id: 'ingwaz',   unicodeSymbol: 'ᛜ', isReversible: false },
   { id: 'dagaz',    unicodeSymbol: 'ᛞ', isReversible: false },
-  { id: 'othala',   unicodeSymbol: 'ᛟ', isReversible: false },
+  { id: 'othala',   unicodeSymbol: 'ᛟ', isReversible: true  },
   { id: 'blank',    unicodeSymbol: '◻', isReversible: false },
 ];

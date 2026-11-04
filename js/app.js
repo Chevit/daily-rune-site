@@ -2,7 +2,8 @@ import { getDailyRune } from './rune-engine.js';
 import { UI } from './ui.js';
 
 const runeId = getDailyRune();
-let currentLocale = localStorage.getItem('locale') || 'en';
+// A page-pinned locale (/uk/ sets data-locale) wins over the stored preference.
+let currentLocale = document.body.dataset.locale || localStorage.getItem('locale') || 'en';
 
 const ui = new UI();
 ui.render(runeId, currentLocale);

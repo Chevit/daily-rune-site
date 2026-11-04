@@ -71,6 +71,9 @@ export class UI {
     document.getElementById('privacyLink').textContent = L.privacyPolicy;
     document.getElementById('supportLink').textContent = L.support;
     document.getElementById('termsLink').textContent = L.termsOfUse;
+    const allRunes = document.getElementById('allRunesLink');
+    allRunes.textContent = L.allRuneMeanings;
+    allRunes.href = this._runePath('');
     document.getElementById('dateLabel').textContent = new Date().toLocaleDateString(fmt, {
       weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
     });
@@ -90,5 +93,13 @@ export class UI {
       kwEl.appendChild(span);
     });
     document.getElementById('meaningText').textContent = runeL.uprightMeaning;
+    const full = document.getElementById('fullMeaningLink');
+    full.textContent = LOCALES[this._locale].readFullMeaning;
+    full.href = this._runePath(`${this._runeId}/`);
+  }
+
+  // '/runes/…' or '/uk/runes/…' for the current locale.
+  _runePath(rest) {
+    return `${this._locale === 'ua' ? '/uk' : ''}/runes/${rest}`;
   }
 }

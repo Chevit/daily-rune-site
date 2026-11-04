@@ -6,6 +6,7 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { RUNES } from '../js/runes.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
@@ -25,12 +26,47 @@ for (const id of EXPECTED_IDS) {
 }
 console.log('All 25 runes present ✓');
 
+// Names are not in the JSON — kept here so a JSON re-export can't drop them.
+const NAMES = {
+  fehu: { en: 'Fehu', uk: 'Феу' },
+  uruz: { en: 'Uruz', uk: 'Уруз' },
+  thurisaz: { en: 'Thurisaz', uk: 'Турісаз' },
+  ansuz: { en: 'Ansuz', uk: 'Ансуз' },
+  raidho: { en: 'Raidho', uk: 'Райдо' },
+  kenaz: { en: 'Kenaz', uk: 'Кеназ' },
+  gebo: { en: 'Gebo', uk: 'Ґебо' },
+  wunjo: { en: 'Wunjo', uk: 'Вунйо' },
+  hagalaz: { en: 'Hagalaz', uk: 'Хагалаз' },
+  nauthiz: { en: 'Nauthiz', uk: 'Наутіз' },
+  isa: { en: 'Isa', uk: 'Іса' },
+  jera: { en: 'Jera', uk: 'Єра' },
+  eihwaz: { en: 'Eihwaz', uk: 'Ейваз' },
+  perthro: { en: 'Perthro', uk: 'Пертро' },
+  algiz: { en: 'Algiz', uk: 'Альґіз' },
+  sowilo: { en: 'Sowilo', uk: 'Совіло' },
+  tiwaz: { en: 'Tiwaz', uk: 'Тіваз' },
+  berkano: { en: 'Berkano', uk: 'Беркана' },
+  ehwaz: { en: 'Ehwaz', uk: 'Еваз' },
+  mannaz: { en: 'Mannaz', uk: 'Манназ' },
+  laguz: { en: 'Laguz', uk: 'Лагуз' },
+  ingwaz: { en: 'Ingwaz', uk: 'Інгваз' },
+  dagaz: { en: 'Dagaz', uk: 'Даґаз' },
+  othala: { en: 'Othala', uk: 'Отала' },
+  blank: { en: 'Odin (Blank Rune)', uk: 'Порожня руна' },
+};
+
 function buildRunes(jsonLocale) {
   const result = {};
   for (const id of EXPECTED_IDS) {
     const d = translations[id][jsonLocale];
+    const name = NAMES[id]?.[jsonLocale];
+    if (!name) throw new Error(`Missing name: ${id}/${jsonLocale}`);
+    const reversible = RUNES.find(r => r.id === id).isReversible;
+    if (reversible !== Boolean(d.reversedMeaning)) {
+      throw new Error(`${id}/${jsonLocale}: isReversible=${reversible} but reversedMeaning ${d.reversedMeaning ? 'present' : 'missing'}`);
+    }
     result[id] = {
-      name: d.name,
+      name,
       keywords: d.keywords,
       uprightMeaning: d.uprightMeaning,
       reversedMeaning: d.reversedMeaning,
@@ -57,6 +93,8 @@ export const LOCALES = {
     privacyPolicy: 'Privacy Policy',
     support: 'Support',
     termsOfUse: 'Terms of Use',
+    readFullMeaning: 'Read full meaning →',
+    allRuneMeanings: 'All rune meanings',
     runes: ${JSON.stringify(runesEn, null, 4)},
   },
   ua: {
@@ -69,6 +107,8 @@ export const LOCALES = {
     privacyPolicy: 'Політика конфіденційності',
     support: 'Підтримка',
     termsOfUse: 'Умови використання',
+    readFullMeaning: 'Повне значення →',
+    allRuneMeanings: 'Значення всіх рун',
     runes: ${JSON.stringify(runesUa, null, 4)},
   },
 };

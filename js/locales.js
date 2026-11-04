@@ -13,6 +13,8 @@ export const LOCALES = {
     privacyPolicy: 'Privacy Policy',
     support: 'Support',
     termsOfUse: 'Terms of Use',
+    readFullMeaning: 'Read full meaning →',
+    allRuneMeanings: 'All rune meanings',
     runes: {
     "fehu": {
         "name": "Fehu",
@@ -267,7 +269,8 @@ export const LOCALES = {
             "roots",
             "what you've inherited"
         ],
-        "uprightMeaning": "Othala is about home, family, and the things you carry from your past. It's asking you to think about where you come from — not just literally, but in terms of the patterns, values, and ways of being that got handed down to you.\n\nSome of what you inherited is genuinely valuable — skills, perspectives, a sense of identity and belonging. Lean into those things.\n\nBut some of it might be old patterns that don't serve you anymore. Now's a good time to be honest about which is which — hold onto what's worth keeping, and consciously let go of what isn't.\n\nOthala doesn't reverse. Your roots are your roots."
+        "uprightMeaning": "Othala is about home, family, and the things you carry from your past. It's asking you to think about where you come from — not just literally, but in terms of the patterns, values, and ways of being that got handed down to you.\n\nSome of what you inherited is genuinely valuable — skills, perspectives, a sense of identity and belonging. Lean into those things.\n\nBut some of it might be old patterns that don't serve you anymore. Now's a good time to be honest about which is which — hold onto what's worth keeping, and consciously let go of what isn't.",
+        "reversedMeaning": "Othala reversed can mean feeling disconnected from home, family, or where you came from — maybe there's tension with relatives, or you're carrying baggage from your upbringing that's holding you back rather than helping you.\n\nIt can also point to inheritance drama — money, property, or unfinished family business that needs sorting out. Or it might just be that unsettled feeling of not quite belonging anywhere right now.\n\nEither way, it's worth taking an honest look at what you inherited and deciding what's actually still worth keeping. Some of it you get to let go of, and that's okay."
     },
     "blank": {
         "name": "Odin (Blank Rune)",
@@ -291,17 +294,19 @@ export const LOCALES = {
     privacyPolicy: 'Політика конфіденційності',
     support: 'Підтримка',
     termsOfUse: 'Умови використання',
+    readFullMeaning: 'Повне значення →',
+    allRuneMeanings: 'Значення всіх рун',
     runes: {
     "fehu": {
         "name": "Феу",
         "keywords": [
+            "гроші",
             "достаток",
-            "матеріальні ресурси",
-            "процвітання",
-            "початок справи"
+            "можливість",
+            "добрий старт"
         ],
-        "uprightMeaning": "Феху символізує рух багатства. У давнину худоба була мірою достатку, і ця руна несе енергію живих ресурсів, що зростають і циркулюють. Вона говорить про можливості — фінансові, творчі або матеріальні — які приходять у ваше життя. Приймайте їх без сорому і використовуйте відповідально. Те, що рухається, примножується.",
-        "reversedMeaning": "У перевернутому положенні Феху попереджає про затримку або втрату ресурсів. Потік достатку може тимчасово зупинитися. Варто переглянути свої фінансові звички, уникати ризикованих починань і зосередитися на стабілізації."
+        "uprightMeaning": "Хороша новина — Феу, по суті, руна достатку, і вона з'явилася якраз тоді, коли вам це потрібно. Вважайте її зеленим світлом для всього, що пов'язане з грошима або ресурсами. Справи можуть починати рухатися у фінансовому плані, або на горизонті з'являється можливість, яку не варто відкидати.\n\nГоловне — залишатися відкритим. Не відмахуйтеся від того, що приходить, лише тому, що воно виглядає не так, як ви очікували. Багатство приходить у різних формах — іноді це гроші, іноді творча енергія, корисне знайомство або двері, що нарешті відчинилися.\n\nЩе одна річ, яку підкреслює Феу: щедрість. Накопичувати те, що маєте, — не на вашу користь. Те, що виходить назовні, повертається примноженим. Будьте щедрими там, де можете.\n\nЦе також чудова руна для нових починань. Якщо ви думали про запуск чогось — проєкту, бізнесу, стосунків, нової звички — зараз енергія на вашому боці. Рухайтеся, поки є імпульс.",
+        "reversedMeaning": "Перевернута Феу — привід перевірити, як ідуть справи у фінансовому або ресурсному плані, бо щось може бути не так. Можливо, грошей менше, ніж очікувалося, якийсь план не окупився або ви розтягнулися надто тонко.\n\nЗапитайте себе чесно: чи тримаєтеся ви за те, що маєте, зі страху? Або навпаки — витрачаєте або віддаєте, не залишаючи достатньо для себе?\n\nТак чи інакше, зараз не найкращий час починати щось нове. Краще зупинитися, розібратися і знайти, де течія, перш ніж додавати більше. Як тільки зрозумієте, що йде не так, — зможете це виправити."
     },
     "uruz": {
         "name": "Уруз",
@@ -545,7 +550,8 @@ export const LOCALES = {
             "традиція",
             "рід"
         ],
-        "uprightMeaning": "Отала символізує спадщину і зв’язок із родом або корінням. Вона говорить про те, що людина отримує від попередніх поколінь — як матеріальні речі, так і знання, традиції або цінності.\n\nЦя руна часто пов’язана з темами дому, сім’ї та відчуття належності.\n\nІноді вона вказує на ситуації, пов’язані з родиною, майном або спадщиною.\n\nОтала також нагадує, що кожна людина несе із собою певний досвід і традиції, які можуть допомогти у складних ситуаціях.\n\nЦе може бути знання, навички або світогляд, які передаються з покоління в покоління.\n\nРуна пропонує замислитися, що саме з цієї спадщини є справді цінним і допомагає вам рухатися вперед.\n\nОтала не має перевернутого значення."
+        "uprightMeaning": "Отала символізує спадщину і зв’язок із родом або корінням. Вона говорить про те, що людина отримує від попередніх поколінь — як матеріальні речі, так і знання, традиції або цінності.\n\nЦя руна часто пов’язана з темами дому, сім’ї та відчуття належності.\n\nІноді вона вказує на ситуації, пов’язані з родиною, майном або спадщиною.\n\nОтала також нагадує, що кожна людина несе із собою певний досвід і традиції, які можуть допомогти у складних ситуаціях.\n\nЦе може бути знання, навички або світогляд, які передаються з покоління в покоління.\n\nРуна пропонує замислитися, що саме з цієї спадщини є справді цінним і допомагає вам рухатися вперед.",
+        "reversedMeaning": "Перевернута Отала може означати відчуття відірваності від дому, родини або коріння — можливо, є напруга з рідними, або ви несете з собою щось із дитинства, що радше заважає, ніж допомагає.\n\nІноді це також про суперечки навколо спадщини — гроші, майно чи нез’ясовані сімейні питання. А іноді це просто відчуття, що ви зараз нікуди не належите.\n\nУ будь-якому разі варто чесно подивитися, що саме дісталося вам у спадок, і вирішити, що з цього справді варте того, щоб триматися. Дещо можна й відпустити."
     },
     "blank": {
         "name": "Порожня руна",
