@@ -325,12 +325,12 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dailyrune.app/runes/blank/"/>
   </url>
   <url>
-    <loc>https://dailyrune.app/support.html</loc>
+    <loc>https://dailyrune.app/support</loc>
   </url>
   <url>
-    <loc>https://dailyrune.app/privacy-policy.html</loc>
+    <loc>https://dailyrune.app/privacy-policy</loc>
   </url>
   <url>
-    <loc>https://dailyrune.app/terms-of-use.html</loc>
+    <loc>https://dailyrune.app/terms-of-use</loc>
   </url>
 </urlset>

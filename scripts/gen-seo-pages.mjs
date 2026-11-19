@@ -147,9 +147,9 @@ function footer(l) {
     <div class="divider"></div>
 
     <nav class="footer-nav">
-      <a href="/privacy-policy.html${q}">${esc(L.privacyPolicy)}</a>
-      <a href="/support.html${q}">${esc(L.support)}</a>
-      <a href="/terms-of-use.html${q}">${esc(L.termsOfUse)}</a>
+      <a href="/privacy-policy${q}">${esc(L.privacyPolicy)}</a>
+      <a href="/support${q}">${esc(L.support)}</a>
+      <a href="/terms-of-use${q}">${esc(L.termsOfUse)}</a>
     </nav>`;
 }
 
@@ -269,7 +269,7 @@ ${path ? alt(path) + '\n' : ''}  </url>`;
   const paired = ['/', '/runes/', ...RUNES.map(r => `/runes/${r.id}/`)];
   const urls = [
     ...paired.flatMap(p => [entry(url('en', p), p), entry(url('ua', p), p)]),
-    ...['/support.html', '/privacy-policy.html', '/terms-of-use.html'].map(p => entry(`${SITE}${p}`)),
+    ...['/support', '/privacy-policy', '/terms-of-use'].map(p => entry(`${SITE}${p}`)),
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">

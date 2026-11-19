@@ -3,6 +3,7 @@
 // Checks the static SEO pages written by scripts/gen-seo-pages.mjs and both homepages.
 
 import { readFileSync, existsSync } from 'fs';
+import { execSync } from 'child_process';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { LOCALES } from '../js/locales.js';
@@ -135,12 +136,30 @@ console.log('✓ homepages');
 
 // ── sitemap.xml + robots.txt ──
 const sitemap = read('sitemap.xml');
-const expected = ['/', '/uk/', '/runes/', '/uk/runes/', '/support.html', '/privacy-policy.html', '/terms-of-use.html',
+const expected = ['/', '/uk/', '/runes/', '/uk/runes/', '/support', '/privacy-policy', '/terms-of-use',
   ...RUNES.flatMap(r => [`/runes/${r.id}/`, `/uk/runes/${r.id}/`])];
 for (const p of expected) check(sitemap.includes(`<loc>${SITE}${p}</loc>`), `sitemap.xml: missing ${p}`);
 check((sitemap.match(/<url>/g) || []).length === expected.length, 'sitemap.xml: unexpected extra URLs');
+check(!sitemap.includes('.html</loc>'), 'sitemap.xml: <loc> must not end in .html');
 check(!sitemap.includes('<lastmod>'), 'sitemap.xml: <lastmod> should be removed');
 check(read('robots.txt').includes(`Sitemap: ${SITE}/sitemap.xml`), 'robots.txt: missing Sitemap line');
 console.log('✓ sitemap.xml + robots.txt');
+
+// ── Legal pages: extensionless canonical, no internal .html / index.html links ──
+const LEGAL = ['privacy-policy', 'support', 'terms-of-use'];
+for (const name of LEGAL) {
+  const file = `${name}.html`;
+  check(attr(read(file), /<link rel="canonical" href="([^"]*)">/, 'canonical', file) === `${SITE}/${name}`,
+    `${file}: canonical should be ${SITE}/${name}`);
+}
+const htmlFiles = execSync('git ls-files "*.html"', { cwd: root, encoding: 'utf8' }).trim().split('\n');
+for (const file of htmlFiles) {
+  const html = read(file);
+  check(!html.includes('href="index.html"'), `${file}: links to index.html (use "/")`);
+  for (const name of LEGAL) {
+    check(!new RegExp(`href="/?${name}\\.html`).test(html), `${file}: links to ${name}.html (use /${name})`);
+  }
+}
+console.log('✓ legal pages + internal links');
 
 console.log('\nAll SEO page tests passed ✓');
