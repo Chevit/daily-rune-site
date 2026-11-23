@@ -448,6 +448,16 @@ body::before {
   display: block;
   margin-bottom: 28px;
 }
+/* Courtesy-translation note atop the es privacy/terms blocks */
+.subpage-content .locale-note {
+  font-style: italic;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted);
+  border-left: 2px solid var(--border);
+  padding: 4px 0 4px 14px;
+  margin: -12px 0 24px;
+}
 .subpage-contact-box {
   background: rgba(200,135,58,0.05);
   border: 1px solid rgba(200,135,58,0.15);

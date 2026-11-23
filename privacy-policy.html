@@ -17,10 +17,13 @@
         <button class="locale-btn active" data-locale="en">EN</button>
         <span class="locale-sep">|</span>
         <button class="locale-btn" data-locale="ua">UA</button>
+        <span class="locale-sep">|</span>
+        <button class="locale-btn" data-locale="es">ES</button>
       </div>
       <h1 class="app-title subpage-title">
         <span data-lang="en">Privacy Policy</span>
         <span data-lang="ua">Політика конфіденційності</span>
+        <span data-lang="es">Política de privacidad</span>
       </h1>
       <a href="/" class="back-link">← Daily Rune</a>
     </header>
@@ -238,6 +241,115 @@
 
         <h2>10. Зв'яжіться з нами</h2>
         <p>Якщо у вас є запитання щодо цієї Політики конфіденційності, будь ласка, зв'яжіться з нами:<br>
+        <strong><a href="mailto:runes.chevit@gmail.com">runes.chevit@gmail.com</a></strong></p>
+      </div>
+
+
+      <!-- SPANISH -->
+      <div data-lang="es">
+        <span class="last-updated">Última actualización: 23 de agosto de 2026</span>
+        <p class="locale-note">Esta traducción se ofrece solo por cortesía. En caso de discrepancia, prevalece la versión en inglés.</p>
+        <p>Esta Política de privacidad describe cómo <strong>Daily Rune</strong> («la App», «nosotros») trata la información cuando usas nuestra aplicación móvil. Nos comprometemos a ser transparentes sobre nuestras prácticas con los datos.</p>
+
+        <h2>1. Información que recopilamos</h2>
+        <p>La App en sí <strong>no recopila, almacena ni transmite ninguna información de identificación personal</strong> a nuestros servidores. No exigimos crear una cuenta y no te pedimos tu nombre, dirección de correo electrónico, número de teléfono ni ningún otro dato personal.</p>
+        <p>Los siguientes datos se guardan <strong>solo de forma local en tu dispositivo</strong>:</p>
+        <ul>
+          <li>Cuántas lecturas has hecho hoy (para gestionar el cupo de lecturas gratuitas)</li>
+          <li>Tu estado de desbloqueo Premium (para recordar si has comprado lecturas ilimitadas)</li>
+          <li>Tu preferencia de consentimiento para la analítica</li>
+          <li>Tu historial de lecturas guardadas, incluidas las notas que escribas</li>
+          <li>Tus preguntas de lectura profundizada (susurros) y los textos que has recibido, guardados junto a la lectura a la que pertenecen</li>
+          <li>Tus contadores diarios de susurros (cuántos has usado o ganado hoy)</li>
+        </ul>
+        <p>Estos datos nunca salen de tu dispositivo y no tenemos acceso a ellos. La única excepción se describe en la Sección 3: cuando decides profundizar una lectura, la pregunta que escribes y las runas que has sacado se envían a Google para generar ese texto.</p>
+
+        <h2>2. Analítica</h2>
+        <p>Con tu consentimiento explícito, la App usa <strong>Firebase Analytics</strong> de Google para recopilar datos de uso anónimos. Esto nos ayuda a entender cómo se usa la App y a mejorar la experiencia.</p>
+        <p>Si das tu consentimiento, Firebase Analytics puede recopilar:</p>
+        <ul>
+          <li>Eventos de uso de la App (p. ej., qué pantallas visitas, lecturas completadas)</li>
+          <li>Información del dispositivo (modelo, versión del sistema operativo)</li>
+          <li>Ubicación aproximada obtenida a partir de la dirección IP</li>
+          <li>Datos de rendimiento de la App</li>
+        </ul>
+        <p><strong>No se recopilan datos personales.</strong> Todos los datos de analítica son anónimos y agregados. Te pedimos el consentimiento la primera vez que abres la App, y puedes cambiar tu preferencia en cualquier momento en la pantalla de Ajustes.</p>
+        <p>Política de privacidad de Firebase Analytics: <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">https://firebase.google.com/support/privacy</a></p>
+
+        <h2>3. Lecturas profundizadas («susurros»)</h2>
+        <p>La App ofrece una función opcional para profundizar una lectura: escribes una pregunta sobre las runas que has sacado y la App te devuelve un único texto escrito. Estos textos los genera el <strong>modelo Gemini de Google</strong>, al que se accede a través de Firebase AI Logic.</p>
+        <p>Esta función es <strong>totalmente opcional</strong>. No se envía nada a ningún sitio a menos que decidas expresamente profundizar una lectura, y antes de la primera vez se te muestra un aviso informativo.</p>
+
+        <h3>Qué se envía y qué no</h3>
+        <p>Cuando profundizas una lectura, se envía a Google lo siguiente:</p>
+        <ul>
+          <li>La pregunta que has escrito</li>
+          <li>Las runas que has sacado, su orientación (al derecho o invertida) y sus significados</li>
+          <li>El idioma y el estilo de lectura que has elegido, para que el texto se escriba en consonancia</li>
+        </ul>
+        <p><strong>No se envía nada más.</strong> La solicitud no lleva asociada ninguna cuenta, nombre, dirección de correo electrónico, ID de publicidad, identificador del dispositivo ni ubicación. No te creamos ninguna cuenta y no tenemos forma de vincular una pregunta con una persona.</p>
+        <p>Las solicitudes también llevan un token de verificación de <strong>Firebase App Check</strong>, emitido por Google Play Integrity (Android) o Apple App Attest / DeviceCheck (iOS), que confirma que la solicitud procede de una copia auténtica y sin modificar de la App. Verifica la App, no a ti: no contiene información personal y no se usa para identificarte ni rastrearte.</p>
+
+        <h3>Lo que recibimos: nada</h3>
+        <p>No tenemos servidores propios. Tu pregunta y el texto generado viajan entre tu dispositivo y Google: nunca nos llegan, nunca los registramos y nunca los almacenamos. Ambos se guardan <strong>solo en tu dispositivo</strong>, unidos a la lectura en tu historial, y se eliminan cuando esa lectura se borra (a mano o automáticamente al llegar tu historial a su límite), o cuando borras los datos de la App.</p>
+        <p>Google procesa la solicitud para generar el texto. El tratamiento de esos datos se rige por los términos y la política de privacidad propios de Google, que no controlamos:<br>
+        Términos de la API de Gemini: <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener">https://ai.google.dev/gemini-api/terms</a><br>
+        Política de privacidad de Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a><br>
+        Privacidad de Firebase: <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">https://firebase.google.com/support/privacy</a></p>
+
+        <h3>Tu pregunta nunca se envía a la analítica</h3>
+        <p>Si has dado tu consentimiento para la analítica, solo registramos que hubo una lectura profundizada y cómo fue: la tirada que has usado, tu tipo de acceso (gratuito o Premium), tu idioma, si salió bien o falló y cuánto tardó. <strong>Ni tu pregunta ni el texto generado se envían nunca a la analítica ni a los informes de fallos, y nunca se registran de ninguna forma</strong>: ni como texto, ni como longitud, número de palabras o hash.</p>
+
+        <h3>No incluyas datos personales en tu pregunta</h3>
+        <p>Como tu pregunta se transmite a Google, te pedimos que no incluyas en ella información personal o sensible: nombres completos, datos de contacto, información de salud, datos financieros ni nada sobre otra persona identificable. Escribe sobre tu situación, no sobre identidades.</p>
+        <p>Cuando se acaban tus susurros del día, puedes ver un anuncio con recompensa para ganar uno más. Esos anuncios los muestra Google AdMob y se rigen por la Sección 4; verlos siempre es opcional.</p>
+
+        <h2>4. Servicios de terceros</h2>
+        <p>La App integra servicios de terceros que pueden recopilar datos de forma independiente. No controlamos cómo estos servicios recopilan o usan los datos; consulta sus políticas de privacidad para más detalles.</p>
+
+        <h3>Google AdMob (publicidad)</h3>
+        <p>Quienes usan la versión gratuita ven anuncios mostrados por <strong>Google AdMob</strong>. AdMob puede recopilar y usar:</p>
+        <ul>
+          <li>El ID de publicidad de Android (GAID) / el identificador de publicidad de iOS (IDFA)</li>
+          <li>Información del dispositivo (modelo, versión del sistema operativo)</li>
+          <li>Ubicación aproximada obtenida a partir de la dirección IP</li>
+          <li>Datos de interacción con los anuncios (impresiones, clics)</li>
+          <li>Datos de perfil basados en intereses para anuncios personalizados</li>
+        </ul>
+        <p>Puedes desactivar la publicidad personalizada en cualquier momento desde los ajustes de tu dispositivo: <em>Ajustes → Google → Anuncios → Inhabilitar la personalización de anuncios</em> (Android) o <em>Ajustes → Privacidad y seguridad → Rastreo</em> (iOS).<br>
+        Política de privacidad de Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a></p>
+
+        <h3>Facturación de Google Play / compras dentro de la app de Apple</h3>
+        <p>Si compras el desbloqueo Premium, la transacción la procesa por completo <strong>Google Play</strong> o el <strong>App Store de Apple</strong>. Solo recibimos un token de confirmación para verificar la compra; no se comparte con nosotros ningún dato de pago ni de facturación.<br>
+        Términos de Google Play: <a href="https://play.google.com/about/play-terms/" target="_blank" rel="noopener">https://play.google.com/about/play-terms/</a><br>
+        Política de privacidad de Apple: <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">https://www.apple.com/legal/privacy/</a></p>
+
+        <h2>5. Permisos</h2>
+        <p>La App solicita los siguientes permisos del dispositivo:</p>
+        <ul>
+          <li><strong>Acelerómetro / sensores de movimiento</strong>: se usan solo para detectar el gesto de agitar el teléfono y sacar runas. No se guarda ni se transmite ningún dato de movimiento.</li>
+        </ul>
+        <p>La App <strong>no</strong> solicita acceso a tu cámara, micrófono, contactos, ubicación precisa, fotos ni pide ningún otro permiso sensible.</p>
+
+        <h2>6. Tus opciones</h2>
+        <ul>
+          <li><strong>Analítica:</strong> puedes retirar tu consentimiento en cualquier momento con el interruptor Ajustes → Ayudar a mejorar la app.</li>
+          <li><strong>Lecturas profundizadas:</strong> basta con no usar la función; nunca se envía ninguna pregunta a menos que decidas profundizar una lectura. Al borrar una lectura de tu historial se borran también la pregunta y el texto guardados con ella.</li>
+          <li><strong>Anuncios personalizados:</strong> desactívalos desde los ajustes de publicidad de tu dispositivo.</li>
+          <li><strong>Datos locales:</strong> borra todos los datos locales de la App desinstalándola o borrando sus datos desde los ajustes del dispositivo.</li>
+        </ul>
+
+        <h2>7. Privacidad de los menores</h2>
+        <p>La App no está dirigida a menores de 13 años. No recopilamos a sabiendas información personal de menores. Si crees que un menor ha facilitado información personal a través de la App, contáctanos y tomaremos medidas para eliminarla.</p>
+
+        <h2>8. Conservación de los datos</h2>
+        <p>Los datos guardados localmente, incluidos tu historial de lecturas, tus notas y las preguntas y textos de lecturas profundizadas, permanecen en tu dispositivo hasta que borres la lectura a la que pertenecen, desinstales la App o borres sus datos desde los ajustes del dispositivo. Las lecturas más antiguas también se eliminan automáticamente cuando tu historial llega a su límite, y todo lo guardado con ellas se elimina al mismo tiempo. No guardamos ningún dato en servidores propios.</p>
+
+        <h2>9. Cambios en esta política</h2>
+        <p>Es posible que actualicemos esta Política de privacidad de vez en cuando. Los cambios se publicarán en esta página con una nueva fecha de «Última actualización». Seguir usando la App después de los cambios supone la aceptación de la política revisada.</p>
+
+        <h2>10. Contacto</h2>
+        <p>Si tienes alguna pregunta sobre esta Política de privacidad, escríbenos a:<br>
         <strong><a href="mailto:runes.chevit@gmail.com">runes.chevit@gmail.com</a></strong></p>
       </div>
 
